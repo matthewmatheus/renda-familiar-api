@@ -13,7 +13,6 @@ public record DadosCadastraisReceitas(
         @NotBlank
         String descricao,
         @NotBlank
-
         String valor,
         @NotBlank
         @JsonFormat(pattern = "dd/MM/yyyy")

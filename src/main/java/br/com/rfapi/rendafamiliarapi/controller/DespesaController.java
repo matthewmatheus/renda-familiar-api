@@ -23,7 +23,7 @@ public class DespesaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastraisDespesas dados) {
+    public void cadastrar(@RequestBody  DadosCadastraisDespesas dados) {
 
         repository.save(new Despesa(dados));
 

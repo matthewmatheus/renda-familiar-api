@@ -23,6 +23,7 @@ public class Despesa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String descricao;
     private String valor;
     @JsonFormat(pattern = "dd/MM/yyyy")
