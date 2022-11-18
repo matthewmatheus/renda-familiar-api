@@ -1,6 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.model;
 
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,12 +25,13 @@ public class Despesa {
 
     private String descricao;
     private String valor;
-    private String data;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate data;
 
 
     public Despesa(DadosCadastraisDespesas dados) {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
-        this.data =  dados.data();
+        this.data = dados.data();
     }
 }
