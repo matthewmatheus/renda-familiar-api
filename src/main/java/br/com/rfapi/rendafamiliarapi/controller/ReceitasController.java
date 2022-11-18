@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("receitas")
 public class ReceitasController {
@@ -21,7 +23,7 @@ public class ReceitasController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastraisReceitas dados) {
+    public void cadastrar(@RequestBody @Valid DadosCadastraisReceitas dados) {
 
         repository.save(new Receita(dados));
 
