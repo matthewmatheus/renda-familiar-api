@@ -5,6 +5,7 @@ import br.com.rfapi.rendafamiliarapi.infra.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,15 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("despesas")
 public class DespesaController {
 
-@Autowired
+    @Autowired
     private DespesasRepository repository;
 
 
-public void cadastrar(@RequestBody DadosCadastraisDespesas dados){
+    @PostMapping
+    public void cadastrar(@RequestBody DadosCadastraisDespesas dados) {
 
-    repository.save(new Despesa(dados));
+        repository.save(new Despesa(dados));
 
-}
+    }
 
 
 }
