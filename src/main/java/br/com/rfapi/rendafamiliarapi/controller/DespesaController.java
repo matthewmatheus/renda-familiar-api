@@ -1,8 +1,11 @@
 package br.com.rfapi.rendafamiliarapi.controller;
 
 
+import br.com.rfapi.rendafamiliarapi.infra.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.DespesasRepository;
+import br.com.rfapi.rendafamiliarapi.infra.ReceitaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
+import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
@@ -34,6 +37,13 @@ public class DespesaController {
         return repository.findAll().stream().map(DadosListagemDespesas::new).toList();
     }
 
+    @GetMapping("/{id}")
+    public Despesa detalhar(@PathVariable Long id) {
+
+        return repository.findById(id)
+                .orElseThrow(() -> new DespesaNaoEncontradaException(id));
+
+    }
 
 
 
