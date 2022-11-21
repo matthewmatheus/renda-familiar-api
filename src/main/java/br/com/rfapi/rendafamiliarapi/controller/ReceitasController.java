@@ -36,7 +36,7 @@ public class ReceitasController {
     }
 
     @GetMapping("/{id}")
-    public Receita detalhar(@PathVariable Long id) {
+    public Receita detalharReceita(@PathVariable Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new ReceitaNaoEncontradaException(id));

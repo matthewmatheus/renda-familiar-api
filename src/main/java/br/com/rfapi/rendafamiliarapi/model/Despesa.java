@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-@Entity(name = "Despesa ")
+@Entity(name = "Despesa")
 public class Despesa {
 
     @Id

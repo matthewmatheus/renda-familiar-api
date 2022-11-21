@@ -3,6 +3,7 @@ package br.com.rfapi.rendafamiliarapi.controller;
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.DespesasRepository;
+import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
@@ -35,7 +36,7 @@ public class DespesaController {
     }
 
     @GetMapping("/{id}")
-    public Despesa detalhar(@PathVariable Long id) {
+    public Despesa detalharDespesa(@PathVariable Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new DespesaNaoEncontradaException(id));
