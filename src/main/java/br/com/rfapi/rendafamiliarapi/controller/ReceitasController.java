@@ -6,6 +6,7 @@ import br.com.rfapi.rendafamiliarapi.infra.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
+import com.electronwill.nightconfig.core.conversion.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +56,14 @@ public class ReceitasController {
                     novaReceita.setId(id);
                     return repository.save(novaReceita);
                 });
+    }
+
+
+    @DeleteMapping("/{id}")
+    void excluirReceita(@PathVariable Long id) {
+        repository.deleteById(id);
+
+
     }
 
 }
