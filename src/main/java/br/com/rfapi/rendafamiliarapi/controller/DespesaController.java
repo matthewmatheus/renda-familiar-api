@@ -4,6 +4,7 @@ package br.com.rfapi.rendafamiliarapi.controller;
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
+import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,20 @@ public class DespesaController {
 
     }
 
+    @PutMapping("/{id}")
+    public Despesa atualizar(@RequestBody Despesa novaDespesa, @PathVariable Long id) {
+
+        return repository.findById(id).map(receita -> {
+                    receita.setDescricao(novaDespesa.getDescricao());
+                    receita.setValor(novaDespesa.getValor());
+                    receita.setData(novaDespesa.getData());
+                    return repository.save(receita);
+                })
+                .orElseGet(() -> {
+                    novaDespesa.setId(id);
+                    return repository.save(novaDespesa);
+                });
+    }
 
 
 }
