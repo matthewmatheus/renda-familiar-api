@@ -22,7 +22,7 @@ public class ReceitasController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody  DadosCadastraisReceitas dados) {
+    public void cadastrar(@RequestBody DadosCadastraisReceitas dados) {
 
         repository.save(new Receita(dados));
 
@@ -42,14 +42,22 @@ public class ReceitasController {
 
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Receita atualizar(@RequestBody Receita novaReceita, @PathVariable Long id) {
 
         return repository.findById(id).map(receita -> {
-            receita.
-        });
-
+                    receita.setDescricao(novaReceita.getDescricao());
+                    receita.setValor(novaReceita.getValor());
+                    receita.setData(novaReceita.getData());
+                    return repository.save(receita);
+                })
+                .orElseGet(() -> {
+                    novaReceita.setId(id);
+                    return repository.save(novaReceita);
+                });
     }
 
-
 }
+
+
+

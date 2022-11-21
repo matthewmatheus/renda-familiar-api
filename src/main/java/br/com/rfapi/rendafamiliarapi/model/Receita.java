@@ -1,6 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.model;
 
 
+import br.com.rfapi.rendafamiliarapi.controller.ReceitasController;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
