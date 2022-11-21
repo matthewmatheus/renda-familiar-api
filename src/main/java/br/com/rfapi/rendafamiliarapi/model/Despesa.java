@@ -30,9 +30,14 @@ public class Despesa {
     private LocalDate data;
 
 
-    public Despesa(DadosCadastraisDespesas dados) {
+    public
+    Despesa(DadosCadastraisDespesas dados) {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
         this.data = dados.data();
     }
+
+
+
+
 }
