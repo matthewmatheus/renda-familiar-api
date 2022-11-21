@@ -36,4 +36,5 @@ public class Receita {
         this.valor = dados.valor();
         this.data = dados.data();
     }
+
 }

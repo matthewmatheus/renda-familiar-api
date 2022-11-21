@@ -10,6 +10,7 @@ import com.electronwill.nightconfig.core.conversion.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class ReceitasController {
 
 
     @GetMapping
-    public Page<DadosListagemReceita> listar(Pageable paginacao) {
+    public Page<DadosListagemReceita> listar(@PageableDefault(size = 10, page = 0, sort = {"descricao"}) Pageable paginacao) {
         return repository.findAll(paginacao).map(DadosListagemReceita::new);
 
 //      old ->  return repository.findAll(paginacao).stream().map(DadosListagemReceita::new).toList();
@@ -65,8 +66,8 @@ public class ReceitasController {
 
     @DeleteMapping("/{id}")
     void excluirReceita(@PathVariable Long id) {
-        repository.deleteById(id);
 
+        repository.deleteById(id);
 
     }
 
