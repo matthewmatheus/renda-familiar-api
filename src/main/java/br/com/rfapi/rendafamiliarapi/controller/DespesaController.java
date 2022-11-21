@@ -58,6 +58,14 @@ public class DespesaController {
     }
 
 
+    @DeleteMapping("/{id}")
+    void excluirDespesa(@PathVariable Long id) {
+        repository.deleteById(id);
+
+    }
+
+
+
 }
 
 
