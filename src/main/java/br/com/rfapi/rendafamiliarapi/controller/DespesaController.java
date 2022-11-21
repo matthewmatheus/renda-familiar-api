@@ -9,6 +9,8 @@ import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +33,8 @@ public class DespesaController {
     }
 
     @GetMapping
-    public List<DadosListagemDespesas> listar() {
-        return repository.findAll().stream().map(DadosListagemDespesas::new).toList();
+    public Page<DadosListagemDespesas> listarDespesa(Pageable paginacao) {
+        return repository.findAll(paginacao).map(DadosListagemDespesas::new);
     }
 
     @GetMapping("/{id}")

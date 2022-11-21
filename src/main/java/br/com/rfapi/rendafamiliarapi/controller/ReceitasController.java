@@ -8,6 +8,8 @@ import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
 import com.electronwill.nightconfig.core.conversion.Path;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +33,10 @@ public class ReceitasController {
 
 
     @GetMapping
-    public List<DadosListagemReceita> listar() {
-        return repository.findAll().stream().map(DadosListagemReceita::new).toList();
+    public Page<DadosListagemReceita> listar(Pageable paginacao) {
+        return repository.findAll(paginacao).map(DadosListagemReceita::new);
+
+//      old ->  return repository.findAll(paginacao).stream().map(DadosListagemReceita::new).toList();
     }
 
     @GetMapping("/{id}")
