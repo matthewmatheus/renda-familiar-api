@@ -3,10 +3,7 @@ package br.com.rfapi.rendafamiliarapi.model;
 
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 @Table(name = "receitas")
 @Entity(name = "Receita")
+@Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor

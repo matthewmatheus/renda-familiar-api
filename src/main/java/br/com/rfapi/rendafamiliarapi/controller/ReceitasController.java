@@ -1,11 +1,10 @@
 package br.com.rfapi.rendafamiliarapi.controller;
 
 
-import br.com.rfapi.rendafamiliarapi.infra.ReceitaNaoEncontradaException;
+import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
-import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +39,15 @@ public class ReceitasController {
 
         return repository.findById(id)
                 .orElseThrow(() -> new ReceitaNaoEncontradaException(id));
+
+    }
+
+    @PutMapping
+    public Receita atualizar(@RequestBody Receita novaReceita, @PathVariable Long id) {
+
+        return repository.findById(id).map(receita -> {
+            receita.
+        });
 
     }
 

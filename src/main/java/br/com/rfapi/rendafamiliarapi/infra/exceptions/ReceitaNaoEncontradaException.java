@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.infra;
+package br.com.rfapi.rendafamiliarapi.infra.exceptions;
 
 public class ReceitaNaoEncontradaException extends RuntimeException {
     public ReceitaNaoEncontradaException(Long id) {
