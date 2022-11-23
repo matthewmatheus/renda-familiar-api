@@ -6,11 +6,12 @@ import br.com.rfapi.rendafamiliarapi.infra.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
-import com.electronwill.nightconfig.core.conversion.Path;
+import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,11 @@ public class ReceitasController {
     @Autowired
     private ReceitasRepository repository;
 
+    private ReceitasService receitasService;
+
+    public ReceitasController(ReceitasService receitasService) {
+        this.receitasService = receitasService;
+    }
 
     @PostMapping
     @Transactional
@@ -63,12 +69,17 @@ public class ReceitasController {
                 });
     }
 
-
     @DeleteMapping("/{id}")
     void excluirReceita(@PathVariable Long id) {
 
         repository.deleteById(id);
 
+    }
+
+
+    @GetMapping("/busca")
+    public ResponseEntity<List<Receita>> buscarDescricao(@RequestParam("descricao") String descricao) {
+        return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
 }
