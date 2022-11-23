@@ -58,7 +58,7 @@ public class ReceitasController {
                     return repository.save(receita);
                 })
                 .orElseGet(() -> {
-                    novaReceita.setId(id);
+                    novaReceita.setReceita_id(id);
                     return repository.save(novaReceita);
                 });
     }

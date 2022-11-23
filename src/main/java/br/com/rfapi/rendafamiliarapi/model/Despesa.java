@@ -1,5 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.model;
 
+import br.com.rfapi.rendafamiliarapi.controller.ReceitasController;
+import br.com.rfapi.rendafamiliarapi.infra.Categoria;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
@@ -13,13 +15,15 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "despesa_id")
 @Entity(name = "Despesa")
 public class Despesa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "despesa_id")
+
+    private Long despesa_id;
 
 
     private String descricao;
@@ -27,15 +31,25 @@ public class Despesa {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
 
-    public
-    Despesa(DadosCadastraisDespesas dados) {
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    private Receita receita;
+
+    public Despesa(DadosCadastraisDespesas dados) {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
         this.data = dados.data();
+        this.categoria = dados.categoria();
+
     }
 
 
-
-
 }
+
+
+
+
+

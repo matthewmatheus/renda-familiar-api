@@ -14,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLNonTransientException;
 import java.util.List;
 
 @RestController
@@ -26,9 +29,14 @@ public class DespesaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody  DadosCadastraisDespesas dados) {
+    public void cadastrar(@RequestBody DadosCadastraisDespesas dados) {
 
-        repository.save(new Despesa(dados));
+        try {
+            repository.save(new Despesa(dados));
+        } catch (Exception e) {
+            repository.save(new Despesa(dados));
+        }
+
 
     }
 
@@ -52,10 +60,11 @@ public class DespesaController {
                     receita.setDescricao(novaDespesa.getDescricao());
                     receita.setValor(novaDespesa.getValor());
                     receita.setData(novaDespesa.getData());
+                    receita.setCategoria(novaDespesa.getCategoria());
                     return repository.save(receita);
                 })
                 .orElseGet(() -> {
-                    novaDespesa.setId(id);
+                    novaDespesa.setDespesa_id(id);
                     return repository.save(novaDespesa);
                 });
     }
@@ -66,7 +75,6 @@ public class DespesaController {
         repository.deleteById(id);
 
     }
-
 
 
 }

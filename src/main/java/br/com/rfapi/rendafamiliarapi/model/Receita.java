@@ -16,19 +16,21 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "receita_id")
 public class Receita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "receita_id")
+    private Long receita_id;
 
     private String descricao;
     private String valor;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
-
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Despesa despesa;
 
     public Receita(DadosCadastraisReceitas dados) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
