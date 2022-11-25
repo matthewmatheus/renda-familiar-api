@@ -83,8 +83,8 @@ public class ReceitasController {
         return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
-    @GetMapping("/busca")
-    public ResponseEntity<List<Receita>> buscarData(@RequestParam("data")LocalDate data) {
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Receita>> buscarData(@RequestParam("data")String data) {
         return ResponseEntity.ok(receitasService.buscarData(data));
     }
 }

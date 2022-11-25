@@ -11,5 +11,5 @@ public interface ReceitasService {
 
     List<Receita> buscarDescricao(String descricao);
 
-    List<Receita> buscarData(LocalDate data);
+    List<Receita> buscarData(String data);
 }

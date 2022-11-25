@@ -6,6 +6,7 @@ import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,7 +22,13 @@ public class ReceitaServiceImpl implements ReceitasService {
 
     @Override
     public List<Receita> buscarDescricao(String descricao) {
-        List<Receita> desc = repo.buscarDescricao(descricao);
-        return desc;
+        List<Receita> descricaoBuscada = repo.buscarDescricao(descricao);
+        return descricaoBuscada;
+    }
+
+    @Override
+    public List<Receita> buscarData(String data) {
+        List<Receita> dataBuscada = repo.buscarData(data);
+        return dataBuscada;
     }
 }

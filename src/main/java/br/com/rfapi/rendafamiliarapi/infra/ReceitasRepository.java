@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -21,4 +22,7 @@ public interface ReceitasRepository extends JpaRepository<Receita, Long> {
             "d.descricao LIKE CONCAT('%',:descricao,'%')", nativeQuery = true)
     List<Receita> buscaDescricao(String descricao);
 
+
+    @Query(value = "SELECT d FROM Receita d WHERE d.data LIKE CONCAT ('%',:data,'%')")
+    List<Receita> buscarData(String data);
 }
