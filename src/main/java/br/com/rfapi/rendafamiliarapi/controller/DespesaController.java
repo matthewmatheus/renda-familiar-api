@@ -27,6 +27,10 @@ public class DespesaController {
     private DespesaService despesaService;
 
 
+    public DespesaController(DespesaService despesaService) {
+        this.despesaService = despesaService;
+    }
+
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastraisDespesas dados) {
