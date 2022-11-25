@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class ReceitaServiceImpl implements ReceitasService {
 
-    private ReceitasRepository repo;
+    private final ReceitasRepository repo;
 
     public ReceitaServiceImpl(ReceitasRepository repo) {
         this.repo = repo;
