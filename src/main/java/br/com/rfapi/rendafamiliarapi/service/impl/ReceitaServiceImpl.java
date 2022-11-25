@@ -11,13 +11,13 @@ import java.util.List;
 @Service
 public class ReceitaServiceImpl implements ReceitasService {
 
+    private ReceitasRepository repo;
 
     public ReceitaServiceImpl(ReceitasRepository repo) {
         this.repo = repo;
     }
 
 
-    private ReceitasRepository repo;
 
     @Override
     public List<Receita> buscarDescricao(String descricao) {
