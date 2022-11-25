@@ -4,11 +4,14 @@ package br.com.rfapi.rendafamiliarapi.controller;
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
+import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
+import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +24,7 @@ public class DespesaController {
 
     @Autowired
     private DespesasRepository repository;
-
+    private DespesaService despesaService;
 
 
     @PostMapping
@@ -71,6 +74,11 @@ public class DespesaController {
     void excluirDespesa(@PathVariable Long id) {
         repository.deleteById(id);
 
+    }
+
+    @GetMapping("/busca")
+    public ResponseEntity<List<Despesa>> buscarDescricao(@RequestParam("descricao") String descricao) {
+        return ResponseEntity.ok(despesaService.buscarDescricao(descricao));
     }
 
 
