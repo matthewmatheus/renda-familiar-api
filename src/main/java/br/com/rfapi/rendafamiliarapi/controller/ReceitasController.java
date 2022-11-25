@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -82,6 +83,10 @@ public class ReceitasController {
         return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
+    @GetMapping("/busca")
+    public ResponseEntity<List<Receita>> buscarData(@RequestParam("data")LocalDate data) {
+        return ResponseEntity.ok(receitasService.buscarData(data));
+    }
 }
 
 
