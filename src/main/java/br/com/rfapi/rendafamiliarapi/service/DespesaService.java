@@ -8,4 +8,6 @@ import java.util.List;
 public interface DespesaService {
 
     List<Despesa> buscarDescricao(String descricao);
+
+    List<Despesa> buscarData(String data);
 }

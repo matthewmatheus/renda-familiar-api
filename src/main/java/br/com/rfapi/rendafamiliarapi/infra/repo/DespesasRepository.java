@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.infra;
+package br.com.rfapi.rendafamiliarapi.infra.repo;
 
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
@@ -21,4 +21,9 @@ public interface DespesasRepository extends JpaRepository<Despesa, Long> {
             "d.descricao LIKE CONCAT('%',:descricao,'%')", nativeQuery = true)
     List<Despesa> buscaDescricao(String descricao);
 
+
+    @Query(value = "SELECT d FROM Despesa d WHERE d.data LIKE CONCAT ('%',:data,'%')")
+    List<Despesa> buscarData(String data);
 }
+
+

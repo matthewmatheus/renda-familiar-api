@@ -39,4 +39,7 @@ public class Receita {
         this.data = dados.data();
     }
 
+    public Receita(Receita receita) {
+
+    }
 }

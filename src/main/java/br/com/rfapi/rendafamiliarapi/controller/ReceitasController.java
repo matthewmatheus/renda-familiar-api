@@ -2,21 +2,28 @@ package br.com.rfapi.rendafamiliarapi.controller;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
-import br.com.rfapi.rendafamiliarapi.infra.ReceitasRepository;
+import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasCustomRepository;
+import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.YearMonth;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("receitas")
@@ -26,6 +33,7 @@ public class ReceitasController {
     private ReceitasRepository repository;
 
     private ReceitasService receitasService;
+    private ReceitasCustomRepository receitasCustomRepository;
 
     public ReceitasController(ReceitasService receitasService) {
         this.receitasService = receitasService;
@@ -77,16 +85,36 @@ public class ReceitasController {
 
     }
 
-
-    @GetMapping("/busca")
+    @GetMapping(params = "descricao")
     public ResponseEntity<List<Receita>> buscarDescricao(@RequestParam("descricao") String descricao) {
         return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
-    @GetMapping("/buscar")
-    public ResponseEntity<List<Receita>> buscarData(@RequestParam("data")String data) {
+        @GetMapping(params = "data")
+        public ResponseEntity<List<Receita>> buscarData(@RequestParam("data") @DateTimeFormat( pattern = "yyyy/MM/dd",iso = DateTimeFormat.ISO.NONE) LocalDate data) {
         return ResponseEntity.ok(receitasService.buscarData(data));
     }
+
+
+    @GetMapping("/{year}/{month}")
+    public List<Receita> findByData(@PathVariable("year") String ano, @PathVariable("month") String mes) {
+
+
+        return repository.findByData(ano,mes);
+    }
+
+//    @GetMapping("/{data}")
+//    public List<Receita> buscar(@RequestParam("descricao") String descricao,
+//                                @RequestParam("data") String data) {
+//
+//        return this.receitasCustomRepository.buscar(descricao, data)
+//                .stream().map(Receita::new)
+//                .collect(Collectors.toList());
+//
+//    }
+
+
+
 }
 
 
