@@ -19,9 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.YearMonth;
+import java.time.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -90,29 +88,17 @@ public class ReceitasController {
         return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
-        @GetMapping(params = "data")
-        public ResponseEntity<List<Receita>> buscarData(@RequestParam("data") @DateTimeFormat( pattern = "yyyy/MM/dd",iso = DateTimeFormat.ISO.NONE) LocalDate data) {
-        return ResponseEntity.ok(receitasService.buscarData(data));
-    }
-
-
-    @GetMapping("/{year}/{month}")
-    public List<Receita> findByData(@PathVariable("year") String ano, @PathVariable("month") String mes) {
-
-
-        return repository.findByData(ano,mes);
-    }
-
-//    @GetMapping("/{data}")
-//    public List<Receita> buscar(@RequestParam("descricao") String descricao,
-//                                @RequestParam("data") String data) {
-//
-//        return this.receitasCustomRepository.buscar(descricao, data)
-//                .stream().map(Receita::new)
-//                .collect(Collectors.toList());
-//
+//        @GetMapping(params = "data")
+//        public ResponseEntity<List<Receita>> buscarData(@RequestParam("data") @DateTimeFormat( pattern = "yyyy/MM/dd",iso = DateTimeFormat.ISO.NONE) LocalDate data) {
+//        return ResponseEntity.ok(receitasService.buscarData(data));
 //    }
 
+//    @RequestMapping(method = RequestMethod.GET, value = "/receitas/{ano}/{mes}")
+    @GetMapping("/{ano}/{mes}")
+    public List<Receita> findByData(@PathVariable("ano") String ano, @PathVariable("mes") String mes) {
+
+        return receitasService.findByData(ano,mes);
+    }
 
 
 }

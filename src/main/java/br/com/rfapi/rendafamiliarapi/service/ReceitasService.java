@@ -5,6 +5,8 @@ import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.List;
 
@@ -12,9 +14,6 @@ import java.util.List;
 public interface ReceitasService {
 
     List<Receita> buscarDescricao(String descricao);
-
-    List<Receita> buscarData(LocalDate data);
-
 
     List<Receita> findByData(String ano, String mes);
 }

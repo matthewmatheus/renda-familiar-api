@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.List;
 
@@ -26,10 +28,12 @@ public interface ReceitasRepository extends JpaRepository<Receita, Long> {
     List<Receita> buscaDescricao(String descricao);
 
 
-    @Query(value = "SELECT d FROM Receita d WHERE d.data LIKE CONCAT ('%',:data,'%')")
-    List<Receita> buscarData(LocalDate data);
+//    @Query(value = "SELECT d FROM Receita d WHERE d.data LIKE CONCAT ('%',:data,'%')")
+//    List<Receita> buscarData(LocalDate data);
 
-    @Query(value = "SELECT d FROM Receita d WHERE year(data)=year(current_date()) and month(data)=month(current_date())")
+//    @Query(value = "SELECT d FROM Receita d WHERE d.data LIKE CONCAT ('%',:data,'%')")
+
+
+    @Query(value = "SELECT d FROM Receita d WHERE d.data LIKE CONCAT ('%',:ano,'%') and d.LIKE CONCAT ('%',:mes,'%')")
     List<Receita> findByData(String ano, String mes);
-
 }
