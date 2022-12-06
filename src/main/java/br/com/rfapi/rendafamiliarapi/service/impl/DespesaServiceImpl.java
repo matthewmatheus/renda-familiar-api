@@ -21,10 +21,14 @@ public class DespesaServiceImpl implements DespesaService {
         return desc;
     }
 
+
+
     @Override
-    public List<Despesa> buscarData(String data) {
-        List<Despesa> dataBuscada = repo.buscarData(data);
-        return dataBuscada;
+    public List<Despesa> findByData(String ano, String mes) {
+        List<Despesa> data = repo.findByData(ano, mes);
+        return data;
+
     }
+
 
 }

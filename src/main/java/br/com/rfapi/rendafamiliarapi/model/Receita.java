@@ -4,12 +4,17 @@ package br.com.rfapi.rendafamiliarapi.model;
 import br.com.rfapi.rendafamiliarapi.controller.ReceitasController;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.valueextraction.ExtractedValue;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Table(name = "receitas")
 @Entity(name = "Receita")
@@ -21,7 +26,7 @@ public class Receita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "receita_id")
+    @Column(name = "id")
     private Long receita_id;
 
     private String descricao;
@@ -30,7 +35,10 @@ public class Receita {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
+
+    @JsonIgnore
     private String ano;
+    @JsonIgnore
     private String mes;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
@@ -42,8 +50,8 @@ public class Receita {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
         this.data = dados.data();
-        this.ano = String.valueOf(data.getYear());
-        this.mes = String.valueOf(data.getMonth());
+        this.ano = dados.ano();
+        this.mes = dados.mes();
     }
 
     public Receita(Receita receita) {

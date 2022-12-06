@@ -4,6 +4,7 @@ package br.com.rfapi.rendafamiliarapi.controller;
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
+import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
@@ -83,11 +84,14 @@ public class DespesaController {
         return ResponseEntity.ok(despesaService.buscarDescricao(descricao));
     }
 
-    @GetMapping(params = "data")
-    public ResponseEntity<List<Despesa>> buscarData(@RequestParam("data") String data) {
-        return ResponseEntity.ok(despesaService.buscarData(data));
-    }
 
+    @GetMapping("/{ano}/{mes}")
+    public List<Despesa> findByData(@PathVariable("ano") String ano, @PathVariable("mes") String mes) {
+
+        List<Despesa> date = despesaService.findByData(ano, mes);
+        return date;
+
+    }
 
 
 

@@ -4,6 +4,7 @@ import br.com.rfapi.rendafamiliarapi.controller.ReceitasController;
 import br.com.rfapi.rendafamiliarapi.infra.Categoria;
 import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,8 +22,7 @@ public class Despesa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "despesa_id")
-
+    @Column(name = "id")
     private Long despesa_id;
 
 
@@ -35,15 +35,20 @@ public class Despesa {
     private Categoria categoria;
 
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    private Receita receita;
+    @JsonIgnore
+    private String ano;
+
+    @JsonIgnore
+    private String mes;
+
 
     public Despesa(DadosCadastraisDespesas dados) {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
         this.data = dados.data();
         this.categoria = dados.categoria();
-
+        this.ano = dados.ano();
+        this.mes = dados.mes();
     }
 
 
