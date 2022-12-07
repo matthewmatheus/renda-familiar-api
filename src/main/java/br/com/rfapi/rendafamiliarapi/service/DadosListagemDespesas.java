@@ -12,7 +12,8 @@ public record DadosListagemDespesas(String descricao, String valor, LocalDate da
 
     }
 
+    public void resumo() {
 
-
+    }
 
 }
