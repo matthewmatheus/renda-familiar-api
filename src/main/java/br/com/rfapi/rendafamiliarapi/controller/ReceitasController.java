@@ -88,12 +88,6 @@ public class ReceitasController {
         return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
-//        @GetMapping(params = "data")
-//        public ResponseEntity<List<Receita>> buscarData(@RequestParam("data") @DateTimeFormat( pattern = "yyyy/MM/dd",iso = DateTimeFormat.ISO.NONE) LocalDate data) {
-//        return ResponseEntity.ok(receitasService.buscarData(data));
-//    }
-
-//    @RequestMapping(method = RequestMethod.GET, value = "/receitas/{ano}/{mes}")
     @GetMapping("/{ano}/{mes}")
     public List<Receita> findByData(@PathVariable("ano") String ano, @PathVariable("mes") String mes) {
 

@@ -1,11 +1,11 @@
 package br.com.rfapi.rendafamiliarapi.service;
 
-import br.com.rfapi.rendafamiliarapi.model.Resumo;
+import br.com.rfapi.rendafamiliarapi.model.ResumoMensal;
 
 import java.util.List;
 
 public interface ResumoService {
 
 
-    List<Resumo> fazerResumo(String ano, String mes);
+    List<ResumoMensal> fazerResumo(String ano, String mes);
 }

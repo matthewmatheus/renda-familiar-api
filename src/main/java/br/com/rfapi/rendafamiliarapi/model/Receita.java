@@ -41,9 +41,11 @@ public class Receita {
     @JsonIgnore
     private String mes;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Despesa despesa;
 
+
+@OneToOne
+@JoinColumn(name = "resumo_mensal_id")
+private ResumoMensal resumoMensal;
 
     public Receita(DadosCadastraisReceitas dados) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
