@@ -13,7 +13,7 @@ public record DadosCadastraisReceitas(
         @NotBlank
         String descricao,
         @NotBlank
-        int valor,
+        String valor,
         @NotBlank
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate data,
@@ -24,7 +24,7 @@ public record DadosCadastraisReceitas(
 
         public DadosCadastraisReceitas(@NotBlank
                                        String descricao, @NotBlank
-                                       int valor, @NotBlank
+                                       String valor, @NotBlank
                                        @JsonFormat(pattern = "dd/MM/yyyy")
                                        LocalDate data,
                                        @Nullable
