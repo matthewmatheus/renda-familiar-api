@@ -43,9 +43,6 @@ public class Receita {
 
 
 
-@OneToOne
-@JoinColumn(name = "resumo_mensal_id")
-private ResumoMensal resumoMensal;
 
     public Receita(DadosCadastraisReceitas dados) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

@@ -30,5 +30,18 @@ public class DespesaServiceImpl implements DespesaService {
 
     }
 
+    @Override
+    public Despesa somarValorDespesas(String ano, String mes) {
+
+        Despesa valor = repo.somarValorDespesas(ano, mes);
+        return valor;
+    }
+
+    @Override
+    public List<Despesa> somarDespesasPorCategoria(String ano, String mes) {
+        List<Despesa> totalGasto = repo.somarDespesasPorCategoria(ano, mes);
+        return totalGasto;
+    }
+
 
 }

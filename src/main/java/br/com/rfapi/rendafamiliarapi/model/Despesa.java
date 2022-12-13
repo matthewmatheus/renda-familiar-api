@@ -42,9 +42,6 @@ public class Despesa {
     private String mes;
 
 
-    @ManyToOne
-    @JoinColumn(name = "resumo_mensal_id")
-    private ResumoMensal resumoMensal;
 
     public Despesa(DadosCadastraisDespesas dados) {
         this.descricao = dados.descricao();

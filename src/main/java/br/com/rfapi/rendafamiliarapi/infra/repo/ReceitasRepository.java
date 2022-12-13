@@ -3,15 +3,8 @@ package br.com.rfapi.rendafamiliarapi.infra.repo;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.SqlResultSetMapping;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
-import java.time.YearMonth;
 import java.util.List;
 
 
@@ -31,5 +24,10 @@ public interface ReceitasRepository extends JpaRepository<Receita, Long> {
     List<Receita> findByData(String ano, String mes);
 
 
+    @Query(value = "SELECT SUM(R.valor) AS total_receitas FROM Receita R WHERE R.ano = :ano and R.mes = :mes")
+    Receita somarValorReceitas(String ano, String mes);
+
+    @Query(value = "SELECT SUM(r.valor) - SUM(d.valor) AS saldo_final_mes FROM receitas,despesas WHERE r.ano = :ano and r.mes =:mes and d.ano = :ano and d.mes", nativeQuery = true)
+        Receita descontarDespesas(String ano, String mes);
 }
 

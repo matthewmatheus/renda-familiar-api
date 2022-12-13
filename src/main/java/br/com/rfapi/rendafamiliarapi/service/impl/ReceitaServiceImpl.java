@@ -5,13 +5,11 @@ import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
 import java.util.List;
 
 @Service
 public class ReceitaServiceImpl implements ReceitasService {
+
 
     private final ReceitasRepository repo;
 
@@ -33,6 +31,19 @@ public class ReceitaServiceImpl implements ReceitasService {
 
         List<Receita> date = repo.findByData(ano, mes);
         return date;
+    }
+
+    @Override
+    public Receita somarValorReceitas(String ano, String mes) {
+        Receita valor = repo.somarValorReceitas(ano,mes);
+        return valor;
+
+    }
+
+    @Override
+    public Receita descontarDespesas(String ano, String mes) {
+        Receita saldoFinal = repo.descontarDespesas(ano, mes);
+        return saldoFinal;
     }
 
 

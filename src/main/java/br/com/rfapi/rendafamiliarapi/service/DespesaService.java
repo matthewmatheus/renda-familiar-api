@@ -10,4 +10,8 @@ public interface DespesaService {
 
 
     List<Despesa> findByData(String ano, String mes);
+
+    Despesa somarValorDespesas(String ano,String mes);
+
+    List<Despesa> somarDespesasPorCategoria(String ano, String mes);
 }
