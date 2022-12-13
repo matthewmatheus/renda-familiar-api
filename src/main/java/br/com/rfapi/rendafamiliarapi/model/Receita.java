@@ -30,7 +30,7 @@ public class Receita {
     private Long receita_id;
 
     private String descricao;
-    private String valor;
+    private int valor;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
