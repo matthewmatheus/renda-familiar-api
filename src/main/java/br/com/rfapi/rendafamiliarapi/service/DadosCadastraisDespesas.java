@@ -18,7 +18,7 @@ public record DadosCadastraisDespesas(
 
         @NotBlank
         @JsonInclude(JsonInclude.Include.ALWAYS)
-        int valor,
+        String valor,
         @NotBlank
         @JsonInclude(JsonInclude.Include.ALWAYS)
         @JsonFormat(pattern = "dd/MM/yyyy")
@@ -35,7 +35,7 @@ public record DadosCadastraisDespesas(
 
                                    String descricao, @NotBlank
                                    @JsonInclude(JsonInclude.Include.ALWAYS)
-                                   int valor, @NotBlank
+                                   String valor, @NotBlank
                                    @JsonInclude(JsonInclude.Include.ALWAYS)
                                    @JsonFormat(pattern = "dd/MM/yyyy")
                                    LocalDate data, @Nullable

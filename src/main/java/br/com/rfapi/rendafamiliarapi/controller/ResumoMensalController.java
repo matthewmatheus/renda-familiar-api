@@ -26,7 +26,7 @@ public class ResumoMensalController {
         this.despesaService = despesaService;
     }
 
-    public Receita valorTotalReceitas(int ano, int mes) {
+    public Receita valorTotalReceitas(String ano, String mes) {
         Receita valor =  receitasService.somarValorReceitas(ano, mes);
         return valor;
     }
