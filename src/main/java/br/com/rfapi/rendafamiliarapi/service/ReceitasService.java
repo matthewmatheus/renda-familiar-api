@@ -9,9 +9,9 @@ public interface ReceitasService {
 
     List<Receita> buscarDescricao(String descricao);
 
-    List<Receita> findByData(int ano, int mes);
+    List<Receita> findByData(String ano, String mes);
 
-    Receita somarValorReceitas(int ano, int mes);
+    Receita somarValorReceitas(String ano, String mes);
 
-    Receita descontarDespesas(int ano, int mes);
+    Receita descontarDespesas(String ano, String mes);
 }

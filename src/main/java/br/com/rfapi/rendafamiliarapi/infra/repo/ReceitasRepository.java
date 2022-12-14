@@ -21,13 +21,13 @@ public interface ReceitasRepository extends JpaRepository<Receita, Long> {
     List<Receita> buscaDescricao(String descricao);
 
     @Query(value = "SELECT r FROM Receita r WHERE r.ano = :ano and r.mes = :mes")
-    List<Receita> findByData(int ano, int mes);
+    List<Receita> findByData(String ano, String mes);
 
 
     @Query(value = "SELECT SUM(R.valor) AS total_receitas FROM Receita R WHERE R.ano = :ano and R.mes = :mes")
-    Receita somarValorReceitas(int ano, int mes);
+    Receita somarValorReceitas(String ano, String mes);
 
     @Query(value = "SELECT SUM(r.valor) - SUM(d.valor) AS saldo_final_mes FROM receitas,despesas WHERE r.ano = :ano and r.mes =:mes and d.ano = :ano and d.mes", nativeQuery = true)
-        Receita descontarDespesas(int ano, int mes);
+        Receita descontarDespesas(String ano, String mes);
 }
 
