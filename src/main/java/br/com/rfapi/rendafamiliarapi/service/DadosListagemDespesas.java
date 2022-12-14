@@ -14,7 +14,7 @@ public record DadosListagemDespesas(String descricao, String valor, LocalDate da
 
     public DadosListagemDespesas(Despesa despesa) {
 
-        this(despesa.getDescricao(), despesa.getValor() , despesa.getData());
+        this(despesa.getDescricao(), String.valueOf(despesa.getValor()), despesa.getData());
 
     }
 

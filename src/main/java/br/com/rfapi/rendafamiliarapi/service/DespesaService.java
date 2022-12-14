@@ -9,9 +9,9 @@ public interface DespesaService {
     List<Despesa> buscarDescricao(String descricao);
 
 
-    List<Despesa> findByData(String ano, String mes);
+    List<Despesa> findByData(int ano, int mes);
 
-    Despesa somarValorDespesas(String ano,String mes);
+    Despesa somarValorDespesas(int ano,int mes);
 
-    List<Despesa> somarDespesasPorCategoria(String ano, String mes);
+    List<Despesa> somarDespesasPorCategoria(int ano, int mes);
 }

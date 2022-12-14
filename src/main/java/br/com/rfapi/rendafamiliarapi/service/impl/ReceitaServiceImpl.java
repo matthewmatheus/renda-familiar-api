@@ -27,21 +27,21 @@ public class ReceitaServiceImpl implements ReceitasService {
 
 
     @Override
-    public List<Receita> findByData(String ano, String mes) {
+    public List<Receita> findByData(int ano, int mes) {
 
         List<Receita> date = repo.findByData(ano, mes);
         return date;
     }
 
     @Override
-    public Receita somarValorReceitas(String ano, String mes) {
+    public Receita somarValorReceitas(int ano, int mes) {
         Receita valor = repo.somarValorReceitas(ano,mes);
         return valor;
 
     }
 
     @Override
-    public Receita descontarDespesas(String ano, String mes) {
+    public Receita descontarDespesas(int ano, int mes) {
         Receita saldoFinal = repo.descontarDespesas(ano, mes);
         return saldoFinal;
     }
