@@ -6,12 +6,16 @@ import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("resumo")
@@ -27,8 +31,8 @@ public class ResumoMensalController {
         this.despesaService = despesaService;
     }
 
-    public Long valorTotalReceitas(int ano, int mes) {
-        Long valor =  receitasService.somarValorReceitas(ano, mes);
+    public Object valorTotalReceitas(int ano, int mes) {
+        Object valor =  receitasService.somarValorReceitas(ano, mes);
         return valor;
     }
 
@@ -50,10 +54,11 @@ public class ResumoMensalController {
     }
 
     @GetMapping("/{ano}/{mes}")
-    public void resumo(@PathVariable("ano") int ano, @PathVariable("mes") int mes){
+    public ResponseEntity<Object> resumo(@PathVariable("ano") int ano, @PathVariable("mes") int mes){
+
 
 //        valorTotalDespesas(ano, mes);
-            valorTotalReceitas(ano, mes);
+         return ResponseEntity.ok(valorTotalReceitas(ano, mes));
 //        saldoFinalDoMes(ano, mes);
 //        valorTotalGastoPorCategoria(ano, mes);
 

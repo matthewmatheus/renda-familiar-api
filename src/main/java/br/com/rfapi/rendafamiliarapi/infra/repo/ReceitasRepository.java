@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Repository
@@ -25,7 +26,7 @@ public interface ReceitasRepository extends JpaRepository<Receita, Long> {
 
 
     @Query(value = "SELECT SUM(R.valor) AS total_receitas FROM receitas R WHERE R.ano = :ano and R.mes = :mes", nativeQuery = true)
-    Long somarValorReceitas(int ano, int mes);
+    Object somarValorReceitas(int ano, int mes);
 
     @Query(value = "SELECT SUM(r.valor) - SUM(d.valor) AS saldo_final_mes FROM receitas R,despesas WHERE r.ano = :ano and r.mes =:mes and d.ano = :ano and d.mes", nativeQuery = true)
         Receita descontarDespesas(int ano, int mes);
