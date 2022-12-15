@@ -27,7 +27,7 @@ public class Despesa {
 
 
     private String descricao;
-    private int valor;
+    private Long valor;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
