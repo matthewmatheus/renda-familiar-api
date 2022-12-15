@@ -8,6 +8,6 @@ public record DadosListagemReceita(String descricao, String valor, LocalDate dat
 
     public DadosListagemReceita(Receita receita) {
 
-        this(receita.getDescricao(), receita.getValor(), receita.getData());
+        this(receita.getDescricao(), String.valueOf(receita.getValor()), receita.getData());
     }
 }

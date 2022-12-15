@@ -37,9 +37,9 @@ public class Receita {
 
 
     @JsonIgnore
-    private String ano;
+    private int ano;
     @JsonIgnore
-    private String mes;
+    private int mes;
 
 
 

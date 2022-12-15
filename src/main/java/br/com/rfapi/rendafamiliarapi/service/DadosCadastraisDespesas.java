@@ -18,15 +18,15 @@ public record DadosCadastraisDespesas(
 
         @NotBlank
         @JsonInclude(JsonInclude.Include.ALWAYS)
-        String valor,
+        int valor,
         @NotBlank
         @JsonInclude(JsonInclude.Include.ALWAYS)
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate data,
         @Nullable
-        String ano,
+        int ano,
         @Nullable
-        String mes,
+        int mes,
         @Enumerated(EnumType.STRING)
         Categoria categoria) {
 
@@ -35,18 +35,18 @@ public record DadosCadastraisDespesas(
 
                                    String descricao, @NotBlank
                                    @JsonInclude(JsonInclude.Include.ALWAYS)
-                                   String valor, @NotBlank
+                                   int valor, @NotBlank
                                    @JsonInclude(JsonInclude.Include.ALWAYS)
                                    @JsonFormat(pattern = "dd/MM/yyyy")
                                    LocalDate data, @Nullable
-                                   String ano, @Nullable
-                                   String mes,
+                                   int ano, @Nullable
+                                   int mes,
                                    Categoria categoria) {
         this.descricao = descricao;
         this.valor = valor;
         this.data = data;
-        this.ano = String.valueOf(data.getYear());
-        this.mes = String.valueOf(data.getMonthValue());
+        this.ano = data.getYear();
+        this.mes = data.getMonthValue();
         this.categoria = categoria;
     }
 }

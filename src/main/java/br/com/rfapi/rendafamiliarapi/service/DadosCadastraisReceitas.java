@@ -18,9 +18,9 @@ public record DadosCadastraisReceitas(
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate data,
         @Nullable
-        String ano,
+        int ano,
         @Nullable
-        String mes) {
+        int mes) {
 
         public DadosCadastraisReceitas(@NotBlank
                                        String descricao, @NotBlank
@@ -28,13 +28,13 @@ public record DadosCadastraisReceitas(
                                        @JsonFormat(pattern = "dd/MM/yyyy")
                                        LocalDate data,
                                        @Nullable
-                                       String ano,
+                                       int ano,
                                        @Nullable
-                                       String mes) {
+                                       int mes) {
                 this.descricao = descricao;
                 this.valor = valor;
                 this.data = data;
-                this.mes = String.valueOf(data.getMonthValue());
-                this.ano = String.valueOf(data.getYear());
+                this.mes = data.getMonthValue();
+                this.ano = data.getYear();
         }
 }

@@ -89,7 +89,7 @@ public class ReceitasController {
     }
 
     @GetMapping("/{ano}/{mes}")
-    public List<Receita> findByData(@PathVariable("ano") String ano, @PathVariable("mes") String mes) {
+    public List<Receita> findByData(@PathVariable("ano") int ano, @PathVariable("mes") int mes) {
 
         List<Receita> date = receitasService.findByData(ano, mes);
         return date;

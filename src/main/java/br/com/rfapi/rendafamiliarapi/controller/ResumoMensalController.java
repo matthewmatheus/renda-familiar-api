@@ -26,30 +26,30 @@ public class ResumoMensalController {
         this.despesaService = despesaService;
     }
 
-    public Receita valorTotalReceitas(String ano, String mes) {
-        Receita valor =  receitasService.somarValorReceitas(ano, mes);
+    public Long valorTotalReceitas(int ano, int mes) {
+        Long valor =  receitasService.somarValorReceitas(ano, mes);
         return valor;
     }
 
-    public Despesa valorTotalDespesas(String ano, String mes) {
+    public Despesa valorTotalDespesas(int ano, int mes) {
         Despesa valor = despesaService.somarValorDespesas(ano, mes);
         return valor;
     }
 
-    public Receita saldoFinalDoMes(String ano, String mes) {
+    public Receita saldoFinalDoMes(int ano, int mes) {
 
         Receita saldoFInal = receitasService.descontarDespesas(ano,mes);
         return saldoFInal;
     }
 
-    public List<Despesa> valorTotalGastoPorCategoria(String ano, String mes) {
+    public List<Despesa> valorTotalGastoPorCategoria(int ano, int mes) {
 
         List<Despesa> totalGasto = despesaService.somarDespesasPorCategoria(ano, mes);
         return totalGasto;
     }
 
     @GetMapping("/{ano}/{mes}")
-    public void resumo(@PathVariable("ano") String ano, @PathVariable("mes") String mes){
+    public void resumo(@PathVariable("ano") int ano, @PathVariable("mes") int mes){
 
 //        valorTotalDespesas(ano, mes);
             valorTotalReceitas(ano, mes);

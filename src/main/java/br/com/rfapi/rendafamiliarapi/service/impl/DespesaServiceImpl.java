@@ -24,21 +24,21 @@ public class DespesaServiceImpl implements DespesaService {
 
 
     @Override
-    public List<Despesa> findByData(String ano, String mes) {
+    public List<Despesa> findByData(int ano, int mes) {
         List<Despesa> data = repo.findByData(ano, mes);
         return data;
 
     }
 
     @Override
-    public Despesa somarValorDespesas(String ano, String mes) {
+    public Despesa somarValorDespesas(int ano, int mes) {
 
         Despesa valor = repo.somarValorDespesas(ano, mes);
         return valor;
     }
 
     @Override
-    public List<Despesa> somarDespesasPorCategoria(String ano, String mes) {
+    public List<Despesa> somarDespesasPorCategoria(int ano, int mes) {
         List<Despesa> totalGasto = repo.somarDespesasPorCategoria(ano, mes);
         return totalGasto;
     }

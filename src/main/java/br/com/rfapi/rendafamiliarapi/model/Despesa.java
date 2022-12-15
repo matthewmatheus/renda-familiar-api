@@ -27,7 +27,7 @@ public class Despesa {
 
 
     private String descricao;
-    private String valor;
+    private int valor;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
@@ -36,10 +36,10 @@ public class Despesa {
 
 
     @JsonIgnore
-    private String ano;
+    private int ano;
 
     @JsonIgnore
-    private String mes;
+    private int mes;
 
 
 

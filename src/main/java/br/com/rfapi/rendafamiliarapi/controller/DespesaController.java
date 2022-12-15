@@ -86,7 +86,7 @@ public class DespesaController {
 
 
     @GetMapping("/{ano}/{mes}")
-    public List<Despesa> findByData(@PathVariable("ano") String ano, @PathVariable("mes") String mes) {
+    public List<Despesa> findByData(@PathVariable("ano") int ano, @PathVariable("mes") int mes) {
 
         List<Despesa> date = despesaService.findByData(ano, mes);
         return date;
