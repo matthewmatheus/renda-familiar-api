@@ -12,7 +12,7 @@ public interface ReceitasService {
 
     List<Receita> findByData(int ano, int mes);
 
-    Object somarValorReceitas(int ano, int mes);
+    List<Receita> somarValorReceitas(int ano, int mes);
 
     Receita descontarDespesas(int ano, int mes);
 }

@@ -6,6 +6,7 @@ import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import com.electronwill.nightconfig.core.conversion.Path;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +32,11 @@ public class ResumoMensalController {
         this.despesaService = despesaService;
     }
 
-    public Object valorTotalReceitas(int ano, int mes) {
-        Object valor =  receitasService.somarValorReceitas(ano, mes);
+
+    @GetMapping("/{ano}/{mes}")
+    public List<Receita> valorTotalReceitas(@PathVariable("ano") int ano, @PathVariable("mes") int mes) {
+
+        List<Receita> valor =  receitasService.somarValorReceitas(ano, mes);
         return valor;
     }
 
@@ -53,7 +57,7 @@ public class ResumoMensalController {
         return totalGasto;
     }
 
-    @GetMapping("/{ano}/{mes}")
+
     public ResponseEntity<Object> resumo(@PathVariable("ano") int ano, @PathVariable("mes") int mes){
 
 

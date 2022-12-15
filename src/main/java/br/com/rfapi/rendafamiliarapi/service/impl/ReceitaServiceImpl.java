@@ -35,8 +35,8 @@ public class ReceitaServiceImpl implements ReceitasService {
     }
 
     @Override
-    public Object somarValorReceitas(int ano, int mes) {
-        Object valor = repo.somarValorReceitas(ano,mes);
+    public List<Receita> somarValorReceitas(int ano, int mes) {
+        List<Receita> valor = repo.somarValorReceitas(ano,mes);
         return valor;
 
     }
