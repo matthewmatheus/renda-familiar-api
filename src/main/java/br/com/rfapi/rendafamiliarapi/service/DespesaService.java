@@ -11,7 +11,7 @@ public interface DespesaService {
 
     List<Despesa> findByData(int ano, int mes);
 
-    Despesa somarValorDespesas(int ano,int mes);
+    Object somarValorDespesas(int ano, int mes);
 
-    List<Despesa> somarDespesasPorCategoria(int ano, int mes);
+    List<Object> somarDespesasPorCategoria(int ano, int mes);
 }

@@ -5,6 +5,7 @@ import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 @Service
 public class DespesaServiceImpl implements DespesaService {
@@ -31,16 +32,16 @@ public class DespesaServiceImpl implements DespesaService {
     }
 
     @Override
-    public Despesa somarValorDespesas(int ano, int mes) {
+    public Object somarValorDespesas(int ano, int mes) {
 
-        Despesa valor = repo.somarValorDespesas(ano, mes);
+        Object valor = repo.somarValorDespesas(ano, mes);
         return valor;
     }
 
     @Override
-    public List<Despesa> somarDespesasPorCategoria(int ano, int mes) {
-        List<Despesa> totalGasto = repo.somarDespesasPorCategoria(ano, mes);
-        return totalGasto;
+    public List<Object> somarDespesasPorCategoria(int ano, int mes) {
+        List<Object> totalGasto = Collections.singletonList(repo.somarDespesasPorCategoria(ano, mes));
+        return Collections.singletonList(totalGasto);
     }
 
 

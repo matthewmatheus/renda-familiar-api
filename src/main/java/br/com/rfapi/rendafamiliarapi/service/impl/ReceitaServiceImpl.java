@@ -5,8 +5,8 @@ import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class ReceitaServiceImpl implements ReceitasService {
@@ -35,15 +35,15 @@ public class ReceitaServiceImpl implements ReceitasService {
     }
 
     @Override
-    public List<Receita> somarValorReceitas(int ano, int mes) {
-        List<Receita> valor = repo.somarValorReceitas(ano,mes);
-        return valor;
+    public List<Object> somarValorReceitas(int ano, int mes) {
+        List<Object> valor = repo.somarValorReceitas(ano,mes);
+        return Collections.singletonList(valor);
 
     }
 
     @Override
-    public Receita descontarDespesas(int ano, int mes) {
-        Receita saldoFinal = repo.descontarDespesas(ano, mes);
+    public Object descontarDespesas(int ano, int mes) {
+        Object saldoFinal = repo.descontarDespesas(ano, mes);
         return saldoFinal;
     }
 

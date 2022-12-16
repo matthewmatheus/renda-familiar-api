@@ -23,11 +23,11 @@ public interface DespesasRepository extends JpaRepository<Despesa, Long> {
     @Query(value = "SELECT d FROM Despesa d WHERE d.ano = :ano and d.mes = :mes")
     List<Despesa> findByData(int ano, int mes);
 
-    @Query(value = "SELECT SUM(d.valor) AS total_despesas FROM despesas d WHERE d.ano = :ano and d.mes = :mes ",nativeQuery = true)
-    Despesa somarValorDespesas(int ano, int mes);
+    @Query(value = "SELECT SUM(D.valor) AS total_despesas FROM Despesa D WHERE D.ano = :ano and D.mes = :mes ")
+    Object somarValorDespesas(int ano, int mes);
 
-    @Query(value = "SELECT SUM(d.valor) AS total_despesas from Despesa d WHERE d.ano = :ano and d.mes = :mes  GROUP BY d.categoria")
-   List<Despesa> somarDespesasPorCategoria(int ano, int mes);
+    @Query(value = "SELECT SUM(D.valor) AS total_despesas from Despesa D WHERE D.ano = :ano and D.mes = :mes GROUP BY D.categoria")
+   List<Object> somarDespesasPorCategoria(int ano, int mes);
 
     
 }
