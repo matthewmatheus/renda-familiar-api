@@ -13,17 +13,17 @@ import java.util.List;
 public class ResumoMensalDTO {
 
 
-    private List<Object> valorTotalReceitas;
-    private Object valorTotalDespesas;
-    private Object saldoFinalDoMes;
-    private List<Object> valorTotalGastoPorCategoria;
+    private List<Object> total_receitas;
+    private Object total_despesas;
+    private Object saldo_final;
+    private List<Object> valor_por_categoria;
 
 
     public ResumoMensalDTO(List<Object> valorTotalReceitas, Object valorTotalDespesas, Object saldoFinalDoMes, List<Object> valorTotalGastoPorCategoria) {
-        this.valorTotalReceitas = valorTotalReceitas;
-        this.valorTotalDespesas = valorTotalDespesas;
-        this.saldoFinalDoMes = saldoFinalDoMes;
-        this.valorTotalGastoPorCategoria = valorTotalGastoPorCategoria;
+        this.total_receitas = valorTotalReceitas;
+        this.total_despesas = valorTotalDespesas;
+        this.saldo_final = saldoFinalDoMes;
+        this.valor_por_categoria = valorTotalGastoPorCategoria;
     }
 
 
