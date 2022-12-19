@@ -26,9 +26,9 @@ public interface ReceitasRepository extends JpaRepository<Receita, Long> {
 
 
     @Query(value = "SELECT SUM(R.valor) AS total_receitas FROM Receita R WHERE R.ano = :ano and R.mes = :mes")
-   List<Object> somarValorReceitas(int ano, int mes);
+   Long somarValorReceitas(int ano, int mes);
 
     @Query(value = "SELECT SUM(R.valor) - SUM(D.valor) AS saldo_final_mes FROM Receita R,Despesa D WHERE R.ano = :ano and R.mes =:mes and D.ano = :ano and D.mes = :mes")
-        Object descontarDespesas(int ano, int mes);
+        Long descontarDespesas(int ano, int mes);
 }
 

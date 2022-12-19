@@ -32,16 +32,16 @@ public class DespesaServiceImpl implements DespesaService {
     }
 
     @Override
-    public Object somarValorDespesas(int ano, int mes) {
+    public Long somarValorDespesas(int ano, int mes) {
 
-        Object valor = repo.somarValorDespesas(ano, mes);
+        Long valor = repo.somarValorDespesas(ano, mes);
         return valor;
     }
 
     @Override
-    public List<Object> somarDespesasPorCategoria(int ano, int mes) {
-        List<Object> totalGasto = Collections.singletonList(repo.somarDespesasPorCategoria(ano, mes));
-        return Collections.singletonList(totalGasto);
+    public List<Long> somarDespesasPorCategoria(int ano, int mes) {
+        List<Long> totalGasto = repo.somarDespesasPorCategoria(ano, mes);
+        return totalGasto;
     }
 
 

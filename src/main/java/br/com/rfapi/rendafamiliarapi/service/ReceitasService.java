@@ -11,7 +11,7 @@ public interface ReceitasService {
 
     List<Receita> findByData(int ano, int mes);
 
-    List<Object> somarValorReceitas(int ano, int mes);
+    Long somarValorReceitas(int ano, int mes);
 
-    Object descontarDespesas(int ano, int mes);
+    Long descontarDespesas(int ano, int mes);
 }
