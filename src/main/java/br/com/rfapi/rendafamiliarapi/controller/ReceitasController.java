@@ -14,8 +14,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.mappers.ModelMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("receitas")
@@ -42,10 +44,10 @@ public class ReceitasController {
 
 
     @GetMapping
-    public Page<ListagemReceitasDTO> listar(@PageableDefault(size = 10, page = 0, sort = {"descricao"}) Pageable paginacao) {
-        return repository.findAll(paginacao).map(ListagemReceitasDTO::new);
+    public ResponseEntity<Page<ListagemReceitasDTO>> listar(@PageableDefault(size = 10, page = 0, sort = {"descricao"}) Pageable paginacao) {
 
-//      old ->  return repository.findAll(paginacao).stream().map(DadosListagemReceita::new).toList();
+        return ResponseEntity.ok().body(repository.findAll(paginacao).map(ListagemReceitasDTO::new));
+
     }
 
     @GetMapping("/{id}")
