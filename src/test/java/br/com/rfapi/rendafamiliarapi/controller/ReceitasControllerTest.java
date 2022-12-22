@@ -3,26 +3,27 @@ package br.com.rfapi.rendafamiliarapi.controller;
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.CadastroReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.service.ListagemReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
-import org.apache.coyote.Response;
-import org.junit.jupiter.api.Assertions;
+import org.hibernate.validator.constraints.Range;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import springfox.documentation.swagger2.mappers.ModelMapper;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -47,6 +48,7 @@ class ReceitasControllerTest {
 
     private Receita receita;
 
+    private static final int INDEX = 0;
 
     @InjectMocks
     private ReceitasController controller;
@@ -79,7 +81,19 @@ class ReceitasControllerTest {
     }
 
     @Test
-    void listar() {
+    void whenListarThenReturnListOfReceitasDTO() {
+        Pageable page = Pageable.unpaged();
+        Page<ListagemReceitasDTO> page1 = Page.empty();
+
+        when(repository.findAll()).thenReturn(List.of(receita));
+
+        ResponseEntity<Page<ListagemReceitasDTO>> response = controller.listar();
+
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(ArrayList.class, response.getBody().getClass());
 
     }
 
