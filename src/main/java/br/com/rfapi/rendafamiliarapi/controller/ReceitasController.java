@@ -34,9 +34,9 @@ public class ReceitasController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody CadastroReceitasDTO dados) {
+    public ResponseEntity<Receita> cadastrar(@RequestBody CadastroReceitasDTO dados) {
 
-        repository.save(new Receita(dados));
+       return ResponseEntity.ok(repository.save(new Receita(dados)));
 
     }
 

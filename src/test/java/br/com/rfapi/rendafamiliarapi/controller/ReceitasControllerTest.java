@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -66,8 +67,14 @@ class ReceitasControllerTest {
 
 
     @Test
-    void cadastrar() {
+    void whenCadastrarThenReturnOK() {
 
+        when(repository.save(any())).thenReturn(receita);
+
+        ResponseEntity<Receita> response = controller.cadastrar(receitasDTO);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(ResponseEntity.class, response.getClass());
 
     }
 
