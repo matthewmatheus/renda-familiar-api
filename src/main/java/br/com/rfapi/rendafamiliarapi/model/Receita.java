@@ -50,4 +50,6 @@ public class Receita {
     public Receita(Receita receita) {
 
     }
+
+
 }

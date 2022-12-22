@@ -2,7 +2,6 @@ package br.com.rfapi.rendafamiliarapi.controller;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
-import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasCustomRepository;
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.CadastroReceitasDTO;
@@ -24,6 +23,8 @@ public class ReceitasController {
 
     @Autowired
     private ReceitasRepository repository;
+
+
 
     private ReceitasService receitasService;
 
@@ -48,15 +49,17 @@ public class ReceitasController {
     }
 
     @GetMapping("/{id}")
-    public Receita detalharReceita(@PathVariable Long id) {
+    public ResponseEntity<Receita> findById(@PathVariable Long id) {
 
-        return repository.findById(id)
-                .orElseThrow(() -> new ReceitaNaoEncontradaException(id));
+        return ResponseEntity.ok().body(repository.findById(id).orElseThrow(() -> new ReceitaNaoEncontradaException(id)));
+
+
 
     }
 
     @PutMapping("/{id}")
     public Receita atualizar(@RequestBody Receita novaReceita, @PathVariable Long id) {
+
 
         return repository.findById(id).map(receita -> {
                     receita.setDescricao(novaReceita.getDescricao());
