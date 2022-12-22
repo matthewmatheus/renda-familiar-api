@@ -4,9 +4,9 @@ import br.com.rfapi.rendafamiliarapi.model.Receita;
 
 import java.time.LocalDate;
 
-public record DadosListagemReceita(String descricao, String valor, LocalDate data) {
+public record ListagemReceitasDTO(String descricao, String valor, LocalDate data) {
 
-    public DadosListagemReceita(Receita receita) {
+    public ListagemReceitasDTO(Receita receita) {
 
         this(receita.getDescricao(), String.valueOf(receita.getValor()), receita.getData());
     }

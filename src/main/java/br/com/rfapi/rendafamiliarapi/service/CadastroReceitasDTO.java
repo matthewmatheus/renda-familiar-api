@@ -5,9 +5,8 @@ import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.util.Date;
 
-public record DadosCadastraisReceitas(
+public record CadastroReceitasDTO(
 
 
         @NotBlank
@@ -22,14 +21,14 @@ public record DadosCadastraisReceitas(
         @Nullable
         int mes) {
 
-        public DadosCadastraisReceitas(@NotBlank
+        public CadastroReceitasDTO(@NotBlank
                                        String descricao, @NotBlank
                                        int valor, @NotBlank
                                        @JsonFormat(pattern = "dd/MM/yyyy")
                                        LocalDate data,
-                                       @Nullable
+                                   @Nullable
                                        int ano,
-                                       @Nullable
+                                   @Nullable
                                        int mes) {
                 this.descricao = descricao;
                 this.valor = valor;

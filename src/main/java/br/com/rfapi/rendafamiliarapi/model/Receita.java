@@ -1,20 +1,14 @@
 package br.com.rfapi.rendafamiliarapi.model;
 
 
-import br.com.rfapi.rendafamiliarapi.controller.ReceitasController;
-import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
+import br.com.rfapi.rendafamiliarapi.service.CadastroReceitasDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.valueextraction.ExtractedValue;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Table(name = "receitas")
 @Entity(name = "Receita")
@@ -44,7 +38,7 @@ public class Receita {
 
 
 
-    public Receita(DadosCadastraisReceitas dados) {
+    public Receita(CadastroReceitasDTO dados) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.descricao = dados.descricao();
         this.valor = dados.valor();

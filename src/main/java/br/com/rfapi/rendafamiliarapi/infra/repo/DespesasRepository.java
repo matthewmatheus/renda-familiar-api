@@ -27,7 +27,7 @@ public interface DespesasRepository extends JpaRepository<Despesa, Long> {
     Long somarValorDespesas(int ano, int mes);
 
     @Query(value = "SELECT SUM(D.valor) AS total_despesas from Despesa D WHERE D.ano = :ano and D.mes = :mes GROUP BY D.categoria")
-   List<Long> somarDespesasPorCategoria(int ano, int mes);
+    List<Long> somarDespesasPorCategoria(int ano, int mes);
 
     
 }

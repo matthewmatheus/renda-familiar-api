@@ -1,11 +1,11 @@
 package br.com.rfapi.rendafamiliarapi.service.impl;
 
+import br.com.rfapi.rendafamiliarapi.infra.Categoria;
 import br.com.rfapi.rendafamiliarapi.infra.repo.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 @Service
 public class DespesaServiceImpl implements DespesaService {

@@ -9,10 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
 import java.time.LocalDate;
 
-public record DadosCadastraisDespesas(
+public record CadastroDespesasDTO(
 
         @Nullable
         @Column(name = "id")
@@ -35,7 +34,7 @@ public record DadosCadastraisDespesas(
         Categoria categoria) {
 
 
-    public DadosCadastraisDespesas(
+    public CadastroDespesasDTO(
 
             @Nullable
             Long despesa_id,

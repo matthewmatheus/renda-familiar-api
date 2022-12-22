@@ -4,9 +4,8 @@ package br.com.rfapi.rendafamiliarapi.controller;
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
-import br.com.rfapi.rendafamiliarapi.model.Receita;
-import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisDespesas;
-import br.com.rfapi.rendafamiliarapi.service.DadosListagemDespesas;
+import br.com.rfapi.rendafamiliarapi.service.CadastroDespesasDTO;
+import br.com.rfapi.rendafamiliarapi.service.ListagemDespesasDTO;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,7 +31,7 @@ public class DespesaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastraisDespesas dados) {
+    public void cadastrar(@RequestBody CadastroDespesasDTO dados) {
 
         try {
             repository.save(new Despesa(dados));
@@ -44,8 +43,8 @@ public class DespesaController {
     }
 
     @GetMapping
-    public Page<DadosListagemDespesas> listarDespesa(Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemDespesas::new);
+    public Page<ListagemDespesasDTO> listarDespesa(Pageable paginacao) {
+        return repository.findAll(paginacao).map(ListagemDespesasDTO::new);
     }
 
     @GetMapping("/{id}")

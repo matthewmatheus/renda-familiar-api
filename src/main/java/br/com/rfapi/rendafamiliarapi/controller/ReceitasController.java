@@ -5,23 +5,18 @@ import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaExcept
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasCustomRepository;
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
-import br.com.rfapi.rendafamiliarapi.service.DadosCadastraisReceitas;
-import br.com.rfapi.rendafamiliarapi.service.DadosListagemReceita;
+import br.com.rfapi.rendafamiliarapi.service.CadastroReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.service.ListagemReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.time.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("receitas")
@@ -31,7 +26,6 @@ public class ReceitasController {
     private ReceitasRepository repository;
 
     private ReceitasService receitasService;
-    private ReceitasCustomRepository receitasCustomRepository;
 
     public ReceitasController(ReceitasService receitasService) {
         this.receitasService = receitasService;
@@ -39,7 +33,7 @@ public class ReceitasController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastraisReceitas dados) {
+    public void cadastrar(@RequestBody CadastroReceitasDTO dados) {
 
         repository.save(new Receita(dados));
 
@@ -47,8 +41,8 @@ public class ReceitasController {
 
 
     @GetMapping
-    public Page<DadosListagemReceita> listar(@PageableDefault(size = 10, page = 0, sort = {"descricao"}) Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemReceita::new);
+    public Page<ListagemReceitasDTO> listar(@PageableDefault(size = 10, page = 0, sort = {"descricao"}) Pageable paginacao) {
+        return repository.findAll(paginacao).map(ListagemReceitasDTO::new);
 
 //      old ->  return repository.findAll(paginacao).stream().map(DadosListagemReceita::new).toList();
     }

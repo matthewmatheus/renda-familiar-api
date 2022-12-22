@@ -2,6 +2,8 @@ package br.com.rfapi.rendafamiliarapi.controller;
 
 //import br.com.rfapi.rendafamiliarapi.model.Resumo;
 //import br.com.rfapi.rendafamiliarapi.service.ResumoService;
+import br.com.rfapi.rendafamiliarapi.infra.Categoria;
+import br.com.rfapi.rendafamiliarapi.service.CategoriaDTO;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
 import br.com.rfapi.rendafamiliarapi.service.ResumoMensalDTO;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("resumo")
@@ -52,6 +55,7 @@ public class ResumoMensalController {
     public List<Long> valorTotalGastoPorCategoria(int ano, int mes) {
 
         List<Long> totalGasto = despesaService.somarDespesasPorCategoria(ano, mes);
+
         return totalGasto;
     }
 
