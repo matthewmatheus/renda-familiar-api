@@ -17,4 +17,5 @@ public interface ReceitasService {
 
 
     List<Receita> findAll();
+
 }

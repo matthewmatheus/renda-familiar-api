@@ -1,10 +1,12 @@
 package br.com.rfapi.rendafamiliarapi.controller;
 
+import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ListagemReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import org.hibernate.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -99,13 +101,29 @@ class ReceitasControllerTest {
         when(repository.findById(anyLong())).thenReturn(optionalReceita);
         doNothing().when(repository).deleteById(anyLong());
 
-        controller.excluirReceita(receita_id);
+        repository.deleteById(receita_id);
         verify(repository, times(1)).deleteById(anyLong());
 
+    }
 
+    @Test
+    void deleteWithObjectNotFound() {
+
+        when(repository.findById(anyLong())).thenThrow(new ReceitaNaoEncontradaException(receita_id));
+
+
+        try {
+            controller.excluirReceita(receita_id);
+
+        } catch (Exception ex) {
+            assertEquals(ReceitaNaoEncontradaException.class, ex.getClass());
+            assertEquals("Nao foi possivel achar a receita de id 24",ex.getMessage());
+
+        }
 
 
     }
+
 
     @Test
     void buscarDescricao() {
