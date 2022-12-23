@@ -46,5 +46,10 @@ public class ReceitaServiceImpl implements ReceitasService {
         return saldoFinal;
     }
 
+    @Override
+    public List<Receita> findAll() {
+        return repo.findAll();
+    }
+
 
 }

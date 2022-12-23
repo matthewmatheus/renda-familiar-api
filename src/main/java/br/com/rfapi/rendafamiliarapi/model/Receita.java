@@ -1,7 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.model;
 
 
-import br.com.rfapi.rendafamiliarapi.service.CadastroReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -39,7 +39,7 @@ public class Receita {
 
 
 
-    public Receita(CadastroReceitasDTO dados) {
+    public Receita(ReceitasDTO dados) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.descricao = dados.descricao();
         this.valor = dados.valor();

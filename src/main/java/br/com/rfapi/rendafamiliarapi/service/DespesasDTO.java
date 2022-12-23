@@ -11,7 +11,7 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
-public record CadastroDespesasDTO(
+public record DespesasDTO(
 
         @Nullable
         @Column(name = "id")
@@ -34,7 +34,7 @@ public record CadastroDespesasDTO(
         Categoria categoria) {
 
 
-    public CadastroDespesasDTO(
+    public DespesasDTO(
 
             @Nullable
             Long despesa_id,

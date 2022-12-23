@@ -4,7 +4,7 @@ package br.com.rfapi.rendafamiliarapi.controller;
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Despesa;
-import br.com.rfapi.rendafamiliarapi.service.CadastroDespesasDTO;
+import br.com.rfapi.rendafamiliarapi.service.DespesasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ListagemDespesasDTO;
 import br.com.rfapi.rendafamiliarapi.service.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class DespesaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody CadastroDespesasDTO dados) {
+    public void cadastrar(@RequestBody DespesasDTO dados) {
 
         try {
             repository.save(new Despesa(dados));

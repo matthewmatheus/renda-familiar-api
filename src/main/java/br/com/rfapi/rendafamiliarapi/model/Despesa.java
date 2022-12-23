@@ -1,7 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.model;
 
 import br.com.rfapi.rendafamiliarapi.infra.Categoria;
-import br.com.rfapi.rendafamiliarapi.service.CadastroDespesasDTO;
+import br.com.rfapi.rendafamiliarapi.service.DespesasDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -42,7 +42,7 @@ public class Despesa {
 
 
 
-    public Despesa(CadastroDespesasDTO dados) {
+    public Despesa(DespesasDTO dados) {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
         this.data = dados.data();

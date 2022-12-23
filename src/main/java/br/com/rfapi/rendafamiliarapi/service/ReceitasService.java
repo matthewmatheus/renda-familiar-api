@@ -14,4 +14,7 @@ public interface ReceitasService {
     Long somarValorReceitas(int ano, int mes);
 
     Long descontarDespesas(int ano, int mes);
+
+
+    List<Receita> findAll();
 }

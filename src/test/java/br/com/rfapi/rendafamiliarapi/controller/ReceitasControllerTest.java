@@ -2,41 +2,30 @@ package br.com.rfapi.rendafamiliarapi.controller;
 
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.Receita;
-import br.com.rfapi.rendafamiliarapi.service.CadastroReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ListagemReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
-import org.hibernate.validator.constraints.Range;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import springfox.documentation.swagger2.mappers.ModelMapper;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class ReceitasControllerTest {
-
-
-    private ModelMapper mapper;
 
 
     private static final String descricao = "Receita Test 1";
@@ -58,7 +47,9 @@ class ReceitasControllerTest {
 
     @Mock
     private ReceitasService receitasService;
-    private CadastroReceitasDTO receitasDTO;
+    private ReceitasDTO receitasDTO;
+    private ListagemReceitasDTO listagemReceitasDTO;
+    private Optional<Receita> optionalReceita;
 
 
     @BeforeEach
@@ -81,24 +72,14 @@ class ReceitasControllerTest {
     }
 
     @Test
-    void whenListarThenReturnListOfReceitasDTO() {
-        Pageable page = Pageable.unpaged();
-        Page<ListagemReceitasDTO> page1 = Page.empty();
+    void whenListarThenReturnListOfReceitas() {
 
-        when(repository.findAll()).thenReturn(List.of(receita));
-
-        ResponseEntity<Page<ListagemReceitasDTO>> response = controller.listar();
-
-
-        assertNotNull(response);
-        assertNotNull(response.getBody());
-        assertEquals(ResponseEntity.class, response.getClass());
-        assertEquals(ArrayList.class, response.getBody().getClass());
 
     }
 
+
     @Test
-    void whenFindByIdThenReturnSuccess() {
+    void whenFindByIdThenReturnOK() {
         when(repository.findById(anyLong())).thenReturn(Optional.ofNullable(receita));
 
         ResponseEntity<Receita> response = controller.findById(receita_id);
@@ -114,7 +95,15 @@ class ReceitasControllerTest {
     }
 
     @Test
-    void excluirReceita() {
+    void deleteWithSuccess() {
+        when(repository.findById(anyLong())).thenReturn(optionalReceita);
+        doNothing().when(repository).deleteById(anyLong());
+
+        controller.excluirReceita(receita_id);
+        verify(repository, times(1)).deleteById(anyLong());
+
+
+
 
     }
 
@@ -130,8 +119,10 @@ class ReceitasControllerTest {
 
 
     private void startReceita() {
-        receitasDTO = new CadastroReceitasDTO(receita_id, descricao, valor, data, ano, mes);
+
+        receitasDTO = new ReceitasDTO(receita_id, descricao, valor, data, ano, mes);
         receita = new Receita(receitasDTO);
+        optionalReceita = Optional.of(new Receita(receitasDTO));
 
     }
 }
