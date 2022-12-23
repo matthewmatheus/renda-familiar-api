@@ -18,14 +18,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("despesas")
-public class DespesaController {
+public class DespesaResource {
 
     @Autowired
     private DespesasRepository repository;
     private DespesaService despesaService;
 
 
-    public DespesaController(DespesaService despesaService) {
+    public DespesaResource(DespesaService despesaService) {
         this.despesaService = despesaService;
     }
 

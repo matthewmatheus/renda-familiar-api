@@ -6,7 +6,6 @@ import br.com.rfapi.rendafamiliarapi.model.Receita;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ListagemReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
-import org.hibernate.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import springfox.documentation.swagger2.mappers.ModelMapper;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -29,6 +27,18 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class ReceitasControllerTest {
 
+    @InjectMocks
+    private ReceitasResource resource;
+    @Mock
+    private ReceitasRepository repository;
+
+    @Mock
+    private ReceitasService receitasService;
+
+    private ReceitasDTO receitasDTO;
+    private ListagemReceitasDTO listagemReceitasDTO;
+    private Optional<Receita> optionalReceita;
+
 
     private static final String descricao = "Receita Test 1";
     private static final Long receita_id = 24L;
@@ -36,22 +46,8 @@ class ReceitasControllerTest {
     private static final LocalDate data = LocalDate.of(2005, 05, 06);
     private static final int ano = data.getYear();
     private static final int mes = data.getMonthValue();
-
     private Receita receita;
-
     private static final int INDEX = 0;
-
-    @InjectMocks
-    private ReceitasController controller;
-
-    @Mock
-    private ReceitasRepository repository;
-
-    @Mock
-    private ReceitasService receitasService;
-    private ReceitasDTO receitasDTO;
-    private ListagemReceitasDTO listagemReceitasDTO;
-    private Optional<Receita> optionalReceita;
 
 
     @BeforeEach
@@ -63,10 +59,8 @@ class ReceitasControllerTest {
 
     @Test
     void whenCadastrarThenReturnOK() {
-
         when(repository.save(any())).thenReturn(receita);
-
-        ResponseEntity<Receita> response = controller.cadastrar(receitasDTO);
+        ResponseEntity<Receita> response = resource.cadastrar(receitasDTO);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
@@ -76,7 +70,6 @@ class ReceitasControllerTest {
     @Test
     void whenListarThenReturnListOfReceitas() {
 
-
     }
 
 
@@ -84,7 +77,7 @@ class ReceitasControllerTest {
     void whenFindByIdThenReturnOK() {
         when(repository.findById(anyLong())).thenReturn(Optional.ofNullable(receita));
 
-        ResponseEntity<Receita> response = controller.findById(receita_id);
+        ResponseEntity<Receita> response = resource.findById(receita_id);
         assertNotNull(response);
         assertNotNull(response.getBody());
         assertEquals(ResponseEntity.class, response.getClass());
@@ -111,13 +104,12 @@ class ReceitasControllerTest {
 
         when(repository.findById(anyLong())).thenThrow(new ReceitaNaoEncontradaException(receita_id));
 
-
         try {
-            controller.excluirReceita(receita_id);
+            resource.excluirReceita(receita_id);
 
         } catch (Exception ex) {
             assertEquals(ReceitaNaoEncontradaException.class, ex.getClass());
-            assertEquals("Nao foi possivel achar a receita de id 24",ex.getMessage());
+            assertEquals("Nao foi possivel achar a receita de id 24", ex.getMessage());
 
         }
 
@@ -127,6 +119,8 @@ class ReceitasControllerTest {
 
     @Test
     void buscarDescricao() {
+
+
 
     }
 
