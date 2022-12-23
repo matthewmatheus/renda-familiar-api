@@ -118,11 +118,15 @@ class ReceitasControllerTest {
 
 
     @Test
-    void buscarDescricao() {
+    void whenBuscarPorDescricaoThenReturnOK() {
 
-
+        when(repository.buscarDescricao(anyString())).thenReturn(List.of(receita));
+        List<Receita> response = repository.buscarDescricao(descricao);
+        assertEquals(receita.getDescricao(), response.get(INDEX).getDescricao());
 
     }
+
+
 
     @Test
     void findByData() {
