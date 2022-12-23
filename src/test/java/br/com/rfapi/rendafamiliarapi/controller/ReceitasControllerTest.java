@@ -107,7 +107,7 @@ class ReceitasControllerTest {
     }
 
     @Test
-    void deleteWithObjectNotFound() {
+    void deleteWithReceitaNaoEncontradaException() {
 
         when(repository.findById(anyLong())).thenThrow(new ReceitaNaoEncontradaException(receita_id));
 
