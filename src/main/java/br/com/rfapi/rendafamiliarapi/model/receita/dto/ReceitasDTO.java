@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.service;
+package br.com.rfapi.rendafamiliarapi.model.receita.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.lang.Nullable;

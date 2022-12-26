@@ -1,6 +1,6 @@
 package br.com.rfapi.rendafamiliarapi.infra.repo;
 
-import br.com.rfapi.rendafamiliarapi.model.Receita;
+import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

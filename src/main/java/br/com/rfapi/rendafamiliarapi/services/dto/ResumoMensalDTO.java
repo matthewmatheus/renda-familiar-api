@@ -1,7 +1,6 @@
-package br.com.rfapi.rendafamiliarapi.service;
+package br.com.rfapi.rendafamiliarapi.services.dto;
 
 
-import br.com.rfapi.rendafamiliarapi.infra.Categoria;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

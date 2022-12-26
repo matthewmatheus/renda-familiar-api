@@ -1,6 +1,6 @@
 package br.com.rfapi.rendafamiliarapi.infra.repo;
 
-import br.com.rfapi.rendafamiliarapi.model.Despesa;
+import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,10 +1,10 @@
-package br.com.rfapi.rendafamiliarapi.controller;
+package br.com.rfapi.rendafamiliarapi.controller.Resumo;
 
 //import br.com.rfapi.rendafamiliarapi.model.Resumo;
 //import br.com.rfapi.rendafamiliarapi.service.ResumoService;
-import br.com.rfapi.rendafamiliarapi.service.DespesaService;
-import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
-import br.com.rfapi.rendafamiliarapi.service.ResumoMensalDTO;
+import br.com.rfapi.rendafamiliarapi.services.DespesaService;
+import br.com.rfapi.rendafamiliarapi.services.ReceitasService;
+import br.com.rfapi.rendafamiliarapi.services.dto.ResumoMensalDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

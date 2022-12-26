@@ -1,12 +1,12 @@
-package br.com.rfapi.rendafamiliarapi.controller;
+package br.com.rfapi.rendafamiliarapi.controller.Despesa;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.DespesasRepository;
-import br.com.rfapi.rendafamiliarapi.model.Despesa;
-import br.com.rfapi.rendafamiliarapi.service.DespesasDTO;
-import br.com.rfapi.rendafamiliarapi.service.ListagemDespesasDTO;
-import br.com.rfapi.rendafamiliarapi.service.DespesaService;
+import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
+import br.com.rfapi.rendafamiliarapi.model.despesa.dto.DespesasDTO;
+import br.com.rfapi.rendafamiliarapi.model.despesa.dto.ListagemDespesasDTO;
+import br.com.rfapi.rendafamiliarapi.services.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

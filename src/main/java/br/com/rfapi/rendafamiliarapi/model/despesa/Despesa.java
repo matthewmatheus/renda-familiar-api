@@ -1,7 +1,7 @@
-package br.com.rfapi.rendafamiliarapi.model;
+package br.com.rfapi.rendafamiliarapi.model.despesa;
 
 import br.com.rfapi.rendafamiliarapi.infra.Categoria;
-import br.com.rfapi.rendafamiliarapi.service.DespesasDTO;
+import br.com.rfapi.rendafamiliarapi.model.despesa.dto.DespesasDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

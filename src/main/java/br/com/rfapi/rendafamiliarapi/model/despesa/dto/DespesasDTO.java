@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.service;
+package br.com.rfapi.rendafamiliarapi.model.despesa.dto;
 
 import br.com.rfapi.rendafamiliarapi.infra.Categoria;
 import com.fasterxml.jackson.annotation.JsonFormat;

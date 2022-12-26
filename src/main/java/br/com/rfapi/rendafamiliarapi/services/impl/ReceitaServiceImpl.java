@@ -1,8 +1,8 @@
-package br.com.rfapi.rendafamiliarapi.service.impl;
+package br.com.rfapi.rendafamiliarapi.services.impl;
 
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
-import br.com.rfapi.rendafamiliarapi.model.Receita;
-import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
+import br.com.rfapi.rendafamiliarapi.services.ReceitasService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +21,8 @@ public class ReceitaServiceImpl implements ReceitasService {
 
     @Override
     public List<Receita> buscarDescricao(String descricao) {
-        List<Receita> descricaoBuscada = repo.buscarDescricao(descricao);
-        return descricaoBuscada;
+        return repo.buscarDescricao(descricao);
+
     }
 
 

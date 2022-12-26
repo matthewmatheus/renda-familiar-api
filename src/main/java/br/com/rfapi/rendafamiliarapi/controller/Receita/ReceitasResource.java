@@ -1,11 +1,11 @@
-package br.com.rfapi.rendafamiliarapi.controller;
+package br.com.rfapi.rendafamiliarapi.controller.Receita;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
-import br.com.rfapi.rendafamiliarapi.model.Receita;
-import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
-import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
+import br.com.rfapi.rendafamiliarapi.model.receita.dto.ReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.services.ReceitasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;

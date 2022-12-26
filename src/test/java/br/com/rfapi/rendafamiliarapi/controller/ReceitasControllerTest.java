@@ -1,11 +1,12 @@
 package br.com.rfapi.rendafamiliarapi.controller;
 
+import br.com.rfapi.rendafamiliarapi.controller.Receita.ReceitasResource;
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
 import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
-import br.com.rfapi.rendafamiliarapi.model.Receita;
-import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
-import br.com.rfapi.rendafamiliarapi.service.ListagemReceitasDTO;
-import br.com.rfapi.rendafamiliarapi.service.ReceitasService;
+import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
+import br.com.rfapi.rendafamiliarapi.model.receita.dto.ReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.model.receita.dto.ListagemReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.services.ReceitasService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,11 +44,17 @@ class ReceitasControllerTest {
     private static final String descricao = "Receita Test 1";
     private static final Long receita_id = 24L;
     private static final int valor = 5500;
-    private static final LocalDate data = LocalDate.of(2005, 05, 06);
+    private static final LocalDate data = LocalDate.of(2005, 05, 05);
     private static final int ano = data.getYear();
     private static final int mes = data.getMonthValue();
+
+    private static final LocalDate data2 = LocalDate.of(2006, 06, 06);
+    private static final int ano2 = data2.getYear();
+    private static final int mes2 = data2.getMonthValue();
+
     private Receita receita;
     private static final int INDEX = 0;
+    private Receita receitaNew  ;
 
 
     @BeforeEach
@@ -64,11 +71,6 @@ class ReceitasControllerTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
-
-    }
-
-    @Test
-    void whenListarThenReturnListOfReceitas() {
 
     }
 
@@ -121,15 +123,45 @@ class ReceitasControllerTest {
     void whenBuscarPorDescricaoThenReturnOK() {
 
         when(repository.buscarDescricao(anyString())).thenReturn(List.of(receita));
-        List<Receita> response = repository.buscarDescricao(descricao);
-        assertEquals(receita.getDescricao(), response.get(INDEX).getDescricao());
 
+        List<Receita> response = receitasService.buscarDescricao(descricao);
+
+        new ArrayList<>();
+
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+
+
+    }
+
+    @Test
+    void whenBuscarPorDescricaoThenReturnException() {
+
+        when(repository.buscarDescricao(anyString())).thenThrow(new Exception("test"));
+
+        try {
+            resource.buscarDescricao(descricao);
+
+        } catch (Exception ex) {
+            assertEquals(Exception.class, ex.getClass());
+            assertEquals("test", ex.getMessage());
+
+        }
     }
 
 
 
     @Test
-    void findByData() {
+    void whenFindByDataThenReturnOk() {
+
+        when(resource.findByData(anyInt(), anyInt())).thenReturn(List.of(receita));
+
+        List<Receita> response = repository.findByData(2006,06); // return LIST OF RECEITA
+        List<Receita> byData = resource.findByData(2006, 06);
+
+        assertEquals(response.get(INDEX).getAno(), byData.get(INDEX).getAno());
+        assertEquals(response.get(INDEX).getMes(), byData.get(INDEX).getMes());
 
     }
 
@@ -139,6 +171,11 @@ class ReceitasControllerTest {
         receitasDTO = new ReceitasDTO(receita_id, descricao, valor, data, ano, mes);
         receita = new Receita(receitasDTO);
         optionalReceita = Optional.of(new Receita(receitasDTO));
+
+
+
+        ReceitasDTO receitasDTO2 = new ReceitasDTO(44L, "new receita", 4400, data, ano2, mes2);
+        receitaNew = new Receita(receitasDTO2);
 
     }
 }

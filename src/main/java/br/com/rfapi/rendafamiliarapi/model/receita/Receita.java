@@ -1,7 +1,7 @@
-package br.com.rfapi.rendafamiliarapi.model;
+package br.com.rfapi.rendafamiliarapi.model.receita;
 
 
-import br.com.rfapi.rendafamiliarapi.service.ReceitasDTO;
+import br.com.rfapi.rendafamiliarapi.model.receita.dto.ReceitasDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
