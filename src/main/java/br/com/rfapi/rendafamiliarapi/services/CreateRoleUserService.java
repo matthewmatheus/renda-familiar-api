@@ -1,7 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.services;
 
 
-import br.com.rfapi.rendafamiliarapi.infra.repo.UserRepository;
+import br.com.rfapi.rendafamiliarapi.infra.repositories.user.UserRepository;
 import br.com.rfapi.rendafamiliarapi.model.user.Role;
 import br.com.rfapi.rendafamiliarapi.model.user.User;
 import br.com.rfapi.rendafamiliarapi.model.user.dto.CreateUserRoleDTO;
@@ -40,10 +40,6 @@ public class CreateRoleUserService {
 
         return user;
     }
-
-
-
-
 
 
 

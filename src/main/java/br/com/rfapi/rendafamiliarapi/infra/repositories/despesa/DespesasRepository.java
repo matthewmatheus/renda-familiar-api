@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.infra.repo;
+package br.com.rfapi.rendafamiliarapi.infra.repositories.despesa;
 
 import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;

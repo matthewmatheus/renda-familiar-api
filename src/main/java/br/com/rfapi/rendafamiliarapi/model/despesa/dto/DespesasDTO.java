@@ -1,6 +1,6 @@
 package br.com.rfapi.rendafamiliarapi.model.despesa.dto;
 
-import br.com.rfapi.rendafamiliarapi.infra.Categoria;
+import br.com.rfapi.rendafamiliarapi.services.enums.Categoria;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.lang.Nullable;

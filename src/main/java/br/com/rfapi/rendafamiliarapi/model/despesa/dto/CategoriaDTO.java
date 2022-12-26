@@ -1,6 +1,6 @@
 package br.com.rfapi.rendafamiliarapi.model.despesa.dto;
 
-import br.com.rfapi.rendafamiliarapi.infra.Categoria;
+import br.com.rfapi.rendafamiliarapi.services.enums.Categoria;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

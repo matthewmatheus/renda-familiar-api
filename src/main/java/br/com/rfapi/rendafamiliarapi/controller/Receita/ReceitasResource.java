@@ -2,7 +2,7 @@ package br.com.rfapi.rendafamiliarapi.controller.Receita;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.ReceitaNaoEncontradaException;
-import br.com.rfapi.rendafamiliarapi.infra.repo.ReceitasRepository;
+import br.com.rfapi.rendafamiliarapi.infra.repositories.receita.ReceitasRepository;
 import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
 import br.com.rfapi.rendafamiliarapi.model.receita.dto.ReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.services.ReceitasService;

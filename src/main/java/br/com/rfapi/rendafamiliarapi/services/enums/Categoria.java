@@ -1,10 +1,7 @@
-package br.com.rfapi.rendafamiliarapi.infra;
+package br.com.rfapi.rendafamiliarapi.services.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import javax.naming.Context;
 
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public enum Categoria {

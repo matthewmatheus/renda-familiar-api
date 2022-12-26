@@ -2,7 +2,7 @@ package br.com.rfapi.rendafamiliarapi.controller.Despesa;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.exceptions.DespesaNaoEncontradaException;
-import br.com.rfapi.rendafamiliarapi.infra.repo.DespesasRepository;
+import br.com.rfapi.rendafamiliarapi.infra.repositories.despesa.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
 import br.com.rfapi.rendafamiliarapi.model.despesa.dto.DespesasDTO;
 import br.com.rfapi.rendafamiliarapi.model.despesa.dto.ListagemDespesasDTO;
