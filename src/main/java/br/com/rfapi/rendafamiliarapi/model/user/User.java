@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
-
+//d
 @Entity
 @Data
 @Table(name = "users")
