@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.services;
+package br.com.rfapi.rendafamiliarapi.services.user;
 
 
 import br.com.rfapi.rendafamiliarapi.infra.repositories.user.UserRepository;

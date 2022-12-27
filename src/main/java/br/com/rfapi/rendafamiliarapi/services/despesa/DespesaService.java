@@ -1,4 +1,4 @@
-package br.com.rfapi.rendafamiliarapi.services;
+package br.com.rfapi.rendafamiliarapi.services.despesa;
 
 import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
 

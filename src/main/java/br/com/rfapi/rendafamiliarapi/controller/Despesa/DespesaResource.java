@@ -6,7 +6,7 @@ import br.com.rfapi.rendafamiliarapi.infra.repositories.despesa.DespesasReposito
 import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
 import br.com.rfapi.rendafamiliarapi.model.despesa.dto.DespesasDTO;
 import br.com.rfapi.rendafamiliarapi.model.despesa.dto.ListagemDespesasDTO;
-import br.com.rfapi.rendafamiliarapi.services.DespesaService;
+import br.com.rfapi.rendafamiliarapi.services.despesa.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

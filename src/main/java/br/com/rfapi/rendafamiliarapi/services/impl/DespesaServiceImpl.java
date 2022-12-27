@@ -2,7 +2,7 @@ package br.com.rfapi.rendafamiliarapi.services.impl;
 
 import br.com.rfapi.rendafamiliarapi.infra.repositories.despesa.DespesasRepository;
 import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
-import br.com.rfapi.rendafamiliarapi.services.DespesaService;
+import br.com.rfapi.rendafamiliarapi.services.despesa.DespesaService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

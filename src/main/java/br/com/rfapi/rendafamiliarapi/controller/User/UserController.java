@@ -2,8 +2,8 @@ package br.com.rfapi.rendafamiliarapi.controller.User;
 
 import br.com.rfapi.rendafamiliarapi.model.user.User;
 import br.com.rfapi.rendafamiliarapi.model.user.dto.CreateUserRoleDTO;
-import br.com.rfapi.rendafamiliarapi.services.CreateRoleUserService;
-import br.com.rfapi.rendafamiliarapi.services.CreateUserService;
+import br.com.rfapi.rendafamiliarapi.services.user.CreateRoleUserService;
+import br.com.rfapi.rendafamiliarapi.services.user.CreateUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

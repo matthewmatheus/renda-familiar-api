@@ -6,7 +6,7 @@ import br.com.rfapi.rendafamiliarapi.infra.repositories.receita.ReceitasReposito
 import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
 import br.com.rfapi.rendafamiliarapi.model.receita.dto.ReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.model.receita.dto.ListagemReceitasDTO;
-import br.com.rfapi.rendafamiliarapi.services.ReceitasService;
+import br.com.rfapi.rendafamiliarapi.services.receita.ReceitasService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
