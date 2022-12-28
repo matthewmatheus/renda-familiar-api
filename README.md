@@ -8,15 +8,15 @@ API para controle financeiro da renda familiar.
 
 Foram usadas as seguintes tecnologias ao desenvolver esse projeto:
 
-Java 11
-Maven
-Spring: Boot, Web, Data JPA, Validation, Security
-Lombok
-Hibernate
-MySQL
-Flyway Migration
-Apache Tomcat
-Swagger
+- Java 11
+- Maven
+- Spring: Boot, Web, Data JPA, Validation, Security
+- Lombok
+- Hibernate
+- MySQL
+- Flyway Migration
+- Apache Tomcat
+- Swagger
 
 
 
