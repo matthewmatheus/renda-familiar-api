@@ -1,10 +1,12 @@
-# renda-familiar-api
+# Renda Familiar 
 API para controle financeiro da renda familiar.
+
+
 ![Badge de status do projeto](http://img.shields.io/static/v1?label=status&message=em%20construção&color=orange)
 
-#Tecnologias usadas
+# Tecnologias usadas
 
-Foram ultilizadas as seguintes tecnologias ao desenvolver esse projeto:
+Foram usadas as seguintes tecnologias ao desenvolver esse projeto:
 
 Java 11
 Maven
