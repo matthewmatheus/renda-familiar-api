@@ -22,15 +22,18 @@ public class CreateUserService {
 
     public User execute(User user) {
 
-        User existsUser = userRepository.findByUsername (user.getUsername());
+        User existsUser = userRepository.findByUsername(user.getUsername());
 
         if(existsUser != null) {
             throw new Error("User already exists!");
         }
 
-        user.setPassword(passwordEncoder().encode(user.getPassword()));
 
+        user.setUsername(user.getUsername());
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
         User createdUser = userRepository.save(user);
+
+
 
         return createdUser;
 }}

@@ -8,6 +8,7 @@ import br.com.rfapi.rendafamiliarapi.model.receita.dto.ReceitasDTO;
 import br.com.rfapi.rendafamiliarapi.services.receita.ReceitasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class ReceitasResource {
         this.receitasService = receitasService;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping
     @Transactional
     public ResponseEntity<Receita> cadastrar(@RequestBody ReceitasDTO dados) {
@@ -35,16 +37,21 @@ public class ReceitasResource {
     }
 
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping
     public ResponseEntity<List<Receita>> listar() {
         return ResponseEntity.ok().body(receitasService.findAll());
     }
 
+
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public ResponseEntity<Receita> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(repository.findById(id).orElseThrow(() -> new ReceitaNaoEncontradaException(id)));
     }
 
+
+    @PreAuthorize("hasRole('USER')")
     @PutMapping("/{id}")
     public Receita atualizar(@RequestBody Receita novaReceita, @PathVariable Long id) {
 
@@ -61,17 +68,20 @@ public class ReceitasResource {
     }
 
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/{id}")
     public void excluirReceita(@PathVariable Long id) {
         findById(id);
         repository.deleteById(id);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping(params = "descricao")
     public ResponseEntity<List<Receita>> buscarDescricao(@RequestParam("descricao") String descricao) {
         return ResponseEntity.ok(receitasService.buscarDescricao(descricao));
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{ano}/{mes}")
     public List<Receita> findByData(@PathVariable("ano") int ano, @PathVariable("mes") int mes) {
         List<Receita> date = receitasService.findByData(ano, mes);

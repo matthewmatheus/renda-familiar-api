@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,7 @@ public class DespesaResource {
         this.despesaService = despesaService;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DespesasDTO dados) {
@@ -41,12 +43,12 @@ public class DespesaResource {
 
 
     }
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping
     public Page<ListagemDespesasDTO> listarDespesa(Pageable paginacao) {
         return repository.findAll(paginacao).map(ListagemDespesasDTO::new);
     }
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public Despesa detalharDespesa(@PathVariable Long id) {
 
@@ -54,7 +56,7 @@ public class DespesaResource {
                 .orElseThrow(() -> new DespesaNaoEncontradaException(id));
 
     }
-
+    @PreAuthorize("hasRole('USER')")
     @PutMapping("/{id}")
     public Despesa atualizar(@RequestBody Despesa novaDespesa, @PathVariable Long id) {
 
@@ -71,19 +73,19 @@ public class DespesaResource {
                 });
     }
 
-
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/{id}")
     void excluirDespesa(@PathVariable Long id) {
         repository.deleteById(id);
 
     }
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping(params = "descricao")
     public ResponseEntity<List<Despesa>> buscarDescricao(@RequestParam("descricao") String descricao) {
         return ResponseEntity.ok(despesaService.buscarDescricao(descricao));
     }
 
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{ano}/{mes}")
     public List<Despesa> findByData(@PathVariable("ano") int ano, @PathVariable("mes") int mes) {
 

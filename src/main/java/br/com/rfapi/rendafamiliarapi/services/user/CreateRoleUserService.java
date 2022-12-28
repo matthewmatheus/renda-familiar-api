@@ -25,7 +25,7 @@ public class CreateRoleUserService {
         List<Role> roles = new ArrayList<>();
 
         if (userExists.isEmpty()) {
-            throw new Error("User does not exists!");
+            throw new Error("User with such id does not exists!");
         }
 
         roles = createUserRoleDTO.getIdsRoles().stream().map(role -> {
@@ -40,7 +40,5 @@ public class CreateRoleUserService {
 
         return user;
     }
-
-
 
 }
