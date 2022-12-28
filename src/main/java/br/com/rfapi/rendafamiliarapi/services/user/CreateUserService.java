@@ -31,6 +31,8 @@ public class CreateUserService {
 
         user.setUsername(user.getUsername());
         user.setPassword(passwordEncoder().encode(user.getPassword()));
+
+
         User createdUser = userRepository.save(user);
 
 

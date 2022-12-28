@@ -24,6 +24,7 @@ public class UserController {
     @PostMapping("/create")
     public User create (@RequestBody User user) {
         return createUserService.execute(user);
+
     }
 
 
