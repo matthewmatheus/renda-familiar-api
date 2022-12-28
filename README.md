@@ -43,6 +43,18 @@ Foram usadas as seguintes tecnologias ao desenvolver esse projeto:
 
 
  O banco de dados ultilizado no projeto foi o `MySQL`, ele subirá os dados automaticamente mas não irá popular, antes de subir certifique-se que o tem instalado ou modifique os arquivos de `application.properties` e `pom.xml` com as configurações e dependências do banco de sua preferência.
+ 
+ Após subir a aplicação tem chances do `data.sql` não inserir as roles , o que pode causar conflito. <br>
+ É preciso fazer manualmente no banco de dados o INSERT delas, assim o problema será resolvido:
+ 
+``` 
+INSERT INTO ROLES(ID, NAME) VALUES(1, 'USER');
+INSERT INTO ROLES(ID, NAME) VALUES(2, 'ADMIN');
+```
+
+É `necessário` dar uma role para o usuário logo após sua criação para que ele seja capaz de realizar as outras requisições.
+
+
 
 
 # Endpoints
