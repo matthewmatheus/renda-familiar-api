@@ -16,7 +16,6 @@ Foram usadas as seguintes tecnologias ao desenvolver esse projeto:
 - MySQL
 - Flyway Migration
 - Apache Tomcat
-- Swagger
 - Mockito
 
 
