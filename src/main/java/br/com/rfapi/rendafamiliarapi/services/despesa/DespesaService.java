@@ -1,6 +1,6 @@
 package br.com.rfapi.rendafamiliarapi.services.despesa;
 
-import br.com.rfapi.rendafamiliarapi.model.despesa.Despesa;
+import br.com.rfapi.rendafamiliarapi.domain.despesa.Despesa;
 
 import java.util.List;
 

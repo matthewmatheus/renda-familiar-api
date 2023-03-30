@@ -1,10 +1,10 @@
 package br.com.rfapi.rendafamiliarapi.services.user;
 
 
-import br.com.rfapi.rendafamiliarapi.infra.repositories.user.UserRepository;
-import br.com.rfapi.rendafamiliarapi.model.user.Role;
-import br.com.rfapi.rendafamiliarapi.model.user.User;
-import br.com.rfapi.rendafamiliarapi.model.user.dto.CreateUserRoleDTO;
+import br.com.rfapi.rendafamiliarapi.infrastructure.repositories.user.UserRepository;
+import br.com.rfapi.rendafamiliarapi.domain.user.Role;
+import br.com.rfapi.rendafamiliarapi.domain.user.User;
+import br.com.rfapi.rendafamiliarapi.domain.user.dto.CreateUserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

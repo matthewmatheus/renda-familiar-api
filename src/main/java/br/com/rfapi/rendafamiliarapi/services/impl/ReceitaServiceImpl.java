@@ -1,7 +1,7 @@
 package br.com.rfapi.rendafamiliarapi.services.impl;
 
-import br.com.rfapi.rendafamiliarapi.infra.repositories.receita.ReceitasRepository;
-import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
+import br.com.rfapi.rendafamiliarapi.infrastructure.repositories.receita.ReceitasRepository;
+import br.com.rfapi.rendafamiliarapi.domain.receita.Receita;
 import br.com.rfapi.rendafamiliarapi.services.receita.ReceitasService;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package br.com.rfapi.rendafamiliarapi.services.receita;
 
-import br.com.rfapi.rendafamiliarapi.model.receita.Receita;
+import br.com.rfapi.rendafamiliarapi.domain.receita.Receita;
 
 import java.util.List;
 
