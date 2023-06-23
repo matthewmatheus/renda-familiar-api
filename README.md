@@ -1,5 +1,5 @@
 # Renda Familiar API
-API para controle financeiro da renda familiar.
+API para controle financeiro e de despesas mensais.
 
 
 ![Badge de status do projeto](http://img.shields.io/static/v1?label=status&message=em%20construção&color=orange)
